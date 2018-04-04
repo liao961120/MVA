@@ -1,5 +1,4 @@
-Principle Component Analysis {#PCA}
-==========================================
+# Principle Component Analysis {#PCA}
 
 
 Conversion Between Correlation & Covaraince Matrices

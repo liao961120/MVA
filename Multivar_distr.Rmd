@@ -1,5 +1,5 @@
-Multivariate Normal Distribution & Covariance Matrix {#mvnorm}
-==========================================
+# Multivariate Normal Distribution & Covariance Matrix {#mvnorm}
+
 
 ```{r}
 library(dplyr)
