@@ -5,3 +5,4 @@ language:
     chapter_name: "Chapter "
 rmd_files:
   html: ["index.Rmd", "Multivar_distr.Rmd", "PCA.Rmd"]
+output_dir: "docs"
