@@ -3,42 +3,87 @@
 Workflow of PCA
 --------------------------------
 
-### Theorectical
+### Conceptual
 
 ```{r echo=FALSE}
 library(DiagrammeR)
 grViz("
 digraph { //non-directed graph
       graph [layout = dot]  //layout = dot|neato|twopi|circo|fdp
-      rankdir=TB    // TB|RL|LR, LR: Left to Right orientation
+      rankdir=LR    // TB|RL|LR, LR: Left to Right orientation
 
       node [shape = box,
-      style = filled]
+      style = filled,  margin=0.3]
       
       node [fillcolor = gray]
       data [label = 'Data']
       
       node [fillcolor = orange1]  //orange1-4
-      cov [label = ' Cov Matrix ']
-      eigen [label = ' Eigen-value/vector of Cov Matrix ']
-      PC [label = ' Principle Components ']
+      cov [label = 'Cov Matrix']
+      eigen [label = 'Eigenvalue & Eigenvector']
+      PC [label = 'Principle Components' fillcolor = OrangeRed]
       
       edge [color = grey3, arrowhead = normal, arrowtail = none]
-      cov -> eigen
+      cov -> eigen [label='Compute']
       
       edge [color = grey, arrowhead = normal, arrowtail = none]
-      data -> {eigen cov}
-      eigen -> PC
-      }
-      
+      data -> cov [label='Compute']
+      data -> eigen [label='Input']
+      eigen -> PC [label='Rotate']
+}
 
       ")
 ```
 
+### Computational (with R)
+```{r echo=FALSE}
+grViz("
+digraph { //non-directed graph
+      graph [layout = dot]  //layout = dot|neato|twopi|circo|fdp
+      rankdir=LR    // TB|RL|LR, LR: Left to Right orientation
+
+      node [shape = box,
+      style = filled,  margin=0.18]
+      
+      node [fillcolor = gray]
+      data [label = 'Data']
+      PC [label = 'Principle Components' fillcolor = OrangeRed]
+      
+      node [fillcolor = WhiteSmoke, shape = oval]  //orange1-4
+      sdev [label = 'sdev: std of PCs']
+      rotation [label = 'rotation: Loading of PCs on origin vars']
+      x [label = 'x: Rotated Data']
+
+      node [fillcolor = Gold, shape = box]
+      scree [lable = 'Scree Plot']
+      Interpret [label = 'Interpret grouping of vars']
+      QQplot [label = 'Q-Q Plot: Single PC']
+      scatter [label = 'Scatter Plot of 2 PCs']
+      
+      edge [color = Darkgray, arrowhead = normal, arrowtail = none]
+      data -> PC [label='prcomp()']
+      sdev -> scree [label = 'factoextra::fviz_eig()*']
+      rotation -> Interpret
+      x -> {QQplot scatter}
+
+      edge [style=dashed, color = grey, arrowhead = none, arrowtail = none]
+      PC -> {sdev rotation x}
+}
+
+      ")
+```
+
+- Note: `sdev` of `prcomp()` are **Standard Deviations**. To get the eigenvalues of the covariance (correlation) matrix, or  equivalently, variances of the principle components, you need to **square `sdev`**.
 
 
 Conversion Between Correlation & Covaraince Matrices
 ------------------------------------------------------
 
+The function `prcomp()` in base R stats package doesn't return covariance nor correlation matrix. You can compute them directly by passing `data.frame` (with observations as rows and variables as columns) to `cor()` and `cov()` directly in R without any additional package.   
+
+Sometimes there is no raw data but only covariance or correlation matrix, you may then need to convert one of the matrix to another. This can be done by using simple matrix multiplication, based on the fact that
+
 $$\mathbf{R} = diag(\mathbf{S})^{\frac{-1}{2}} ~ \mathbf{S} ~ diag(\mathbf{S})^{\frac{-1}{2}}
-(\#eq:cor2cov)$$
+(\#eq:cov2cor)$$
+
+, where $\mathbf{R}$ is the correlation matrix,  $\mathbf{S}$ is the covariance matrix, and $diag(\mathbf{S})$ is the diagonal matrix composed of  diagonal elements of $\mathbf{S}$.

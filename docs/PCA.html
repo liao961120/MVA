@@ -121,12 +121,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="2" data-path="PCA.html"><a href="PCA.html"><i class="fa fa-check"></i><b>2</b> Principle Component Analysis</a><ul>
 <li class="chapter" data-level="2.1" data-path="PCA.html"><a href="PCA.html#workflow-of-pca"><i class="fa fa-check"></i><b>2.1</b> Workflow of PCA</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="PCA.html"><a href="PCA.html#theorectical"><i class="fa fa-check"></i><b>2.1.1</b> Theorectical</a></li>
+<li class="chapter" data-level="2.1.1" data-path="PCA.html"><a href="PCA.html#conceptual"><i class="fa fa-check"></i><b>2.1.1</b> Conceptual</a></li>
+<li class="chapter" data-level="2.1.2" data-path="PCA.html"><a href="PCA.html#computational-with-r"><i class="fa fa-check"></i><b>2.1.2</b> Computational (with R)</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="PCA.html"><a href="PCA.html#conversion-between-correlation-covaraince-matrices"><i class="fa fa-check"></i><b>2.2</b> Conversion Between Correlation &amp; Covaraince Matrices</a></li>
 </ul></li>
 <li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+<li> </li>
 
 </ul>
 
@@ -149,16 +150,27 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1><span class="header-section-number">Chapter 2</span> Principle Component Analysis</h1>
 <div id="workflow-of-pca" class="section level2">
 <h2><span class="header-section-number">2.1</span> Workflow of PCA</h2>
-<div id="theorectical" class="section level3">
-<h3><span class="header-section-number">2.1.1</span> Theorectical</h3>
-<div id="htmlwidget-018b6a173ccfe178df11" style="width:672px;height:288px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-018b6a173ccfe178df11">{"x":{"diagram":"\ndigraph { //non-directed graph\n      graph [layout = dot]  //layout = dot|neato|twopi|circo|fdp\n      rankdir=TB    // TB|RL|LR, LR: Left to Right orientation\n\n      node [shape = box,\n      style = filled]\n      \n      node [fillcolor = gray]\n      data [label = \"Data\"]\n      \n      node [fillcolor = orange1]  //orange1-4\n      cov [label = \"Cov Matrix\"]\n      eigen [label = \"Eigen-value/vector of Cov Matrix\"]\n      PC [label = \"Principle Components\"]\n      \n      edge [color = grey3, arrowhead = normal, arrowtail = none]\n      cov -> eigen\n      \n      edge [color = grey, arrowhead = normal, arrowtail = none]\n      data -> {eigen cov}\n      eigen -> PC\n      }\n      \n\n      ","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="conceptual" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> Conceptual</h3>
+<div id="htmlwidget-646807c9efb55f1a7005" style="width:672px;height:288px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-646807c9efb55f1a7005">{"x":{"diagram":"\ndigraph { //non-directed graph\n      graph [layout = dot]  //layout = dot|neato|twopi|circo|fdp\n      rankdir=LR    // TB|RL|LR, LR: Left to Right orientation\n\n      node [shape = box,\n      style = filled,  margin=0.3]\n      \n      node [fillcolor = gray]\n      data [label = \"Data\"]\n      \n      node [fillcolor = orange1]  //orange1-4\n      cov [label = \"Cov Matrix\"]\n      eigen [label = \"Eigenvalue & Eigenvector\"]\n      PC [label = \"Principle Components\" fillcolor = OrangeRed]\n      \n      edge [color = grey3, arrowhead = normal, arrowtail = none]\n      cov -> eigen [label=\"Compute\"]\n      \n      edge [color = grey, arrowhead = normal, arrowtail = none]\n      data -> cov [label=\"Compute\"]\n      data -> eigen [label=\"Input\"]\n      eigen -> PC [label=\"Rotate\"]\n}\n\n      ","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="computational-with-r" class="section level3">
+<h3><span class="header-section-number">2.1.2</span> Computational (with R)</h3>
+<div id="htmlwidget-c1b91c11d0e60c235a95" style="width:672px;height:288px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c1b91c11d0e60c235a95">{"x":{"diagram":"\ndigraph { //non-directed graph\n      graph [layout = dot]  //layout = dot|neato|twopi|circo|fdp\n      rankdir=LR    // TB|RL|LR, LR: Left to Right orientation\n\n      node [shape = box,\n      style = filled,  margin=0.18]\n      \n      node [fillcolor = gray]\n      data [label = \"Data\"]\n      PC [label = \"Principle Components\" fillcolor = OrangeRed]\n      \n      node [fillcolor = WhiteSmoke, shape = oval]  //orange1-4\n      sdev [label = \"sdev: std of PCs\"]\n      rotation [label = \"rotation: Loading of PCs on origin vars\"]\n      x [label = \"x: Rotated Data\"]\n\n      node [fillcolor = Gold, shape = box]\n      scree [lable = \"Scree Plot\"]\n      Interpret [label = \"Interpret grouping of vars\"]\n      QQplot [label = \"Q-Q Plot: Single PC\"]\n      scatter [label = \"Scatter Plot of 2 PCs\"]\n      \n      edge [color = Darkgray, arrowhead = normal, arrowtail = none]\n      data -> PC [label=\"prcomp()\"]\n      sdev -> scree [label = \"factoextra::fviz_eig()*\"]\n      rotation -> Interpret\n      x -> {QQplot scatter}\n\n      edge [style=dashed, color = grey, arrowhead = none, arrowtail = none]\n      PC -> {sdev rotation x}\n}\n\n      ","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<ul>
+<li>Note: <code>sdev</code> of <code>prcomp()</code> are <strong>Standard Deviations</strong>. To get the eigenvalues of the covariance (correlation) matrix, or equivalently, variances of the principle components, you need to <strong>square <code>sdev</code></strong>.</li>
+</ul>
 </div>
 </div>
 <div id="conversion-between-correlation-covaraince-matrices" class="section level2">
 <h2><span class="header-section-number">2.2</span> Conversion Between Correlation &amp; Covaraince Matrices</h2>
-<p><span class="math display" id="eq:cor2cov">\[\mathbf{R} = diag(\mathbf{S})^{\frac{-1}{2}} ~ \mathbf{S} ~ diag(\mathbf{S})^{\frac{-1}{2}}
+<p>The function <code>prcomp()</code> in base R stats package doesn’t return covariance nor correlation matrix. You can compute them directly by passing <code>data.frame</code> (with observations as rows and variables as columns) to <code>cor()</code> and <code>cov()</code> directly in R without any additional package.</p>
+<p>Sometimes there is no raw data but only covariance or correlation matrix, you may then need to convert one of the matrix to another. This can be done by using simple matrix multiplication, based on the fact that</p>
+<p><span class="math display" id="eq:cov2cor">\[\mathbf{R} = diag(\mathbf{S})^{\frac{-1}{2}} ~ \mathbf{S} ~ diag(\mathbf{S})^{\frac{-1}{2}}
 \tag{2.1}\]</span></p>
+<p>, where <span class="math inline">\(\mathbf{R}\)</span> is the correlation matrix, <span class="math inline">\(\mathbf{S}\)</span> is the covariance matrix, and <span class="math inline">\(diag(\mathbf{S})\)</span> is the diagonal matrix composed of diagonal elements of <span class="math inline">\(\mathbf{S}\)</span>.</p>
 
 </div>
 </div>
