@@ -1,5 +1,41 @@
 # Principle Component Analysis {#PCA}
 
+Workflow of PCA
+--------------------------------
+
+### Theorectical
+
+```{r echo=FALSE}
+library(DiagrammeR)
+grViz("
+digraph { //non-directed graph
+      graph [layout = dot]  //layout = dot|neato|twopi|circo|fdp
+      rankdir=TB    // TB|RL|LR, LR: Left to Right orientation
+
+      node [shape = box,
+      style = filled]
+      
+      node [fillcolor = gray]
+      data [label = 'Data']
+      
+      node [fillcolor = orange1]  //orange1-4
+      cov [label = ' Cov Matrix ']
+      eigen [label = ' Eigen-value/vector of Cov Matrix ']
+      PC [label = ' Principle Components ']
+      
+      edge [color = grey3, arrowhead = normal, arrowtail = none]
+      cov -> eigen
+      
+      edge [color = grey, arrowhead = normal, arrowtail = none]
+      data -> {eigen cov}
+      eigen -> PC
+      }
+      
+
+      ")
+```
+
+
 
 Conversion Between Correlation & Covaraince Matrices
 ------------------------------------------------------

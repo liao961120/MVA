@@ -47,6 +47,10 @@
 
 
 
+<script src="libs/htmlwidgets-1.0/htmlwidgets.js"></script>
+<script src="libs/viz-0.3/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-0.9.2/grViz.js"></script>
 
 
 <style type="text/css">
@@ -116,7 +120,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="PCA.html"><a href="PCA.html"><i class="fa fa-check"></i><b>2</b> Principle Component Analysis</a><ul>
-<li class="chapter" data-level="2.1" data-path="PCA.html"><a href="PCA.html#conversion-between-correlation-covaraince-matrices"><i class="fa fa-check"></i><b>2.1</b> Conversion Between Correlation &amp; Covaraince Matrices</a></li>
+<li class="chapter" data-level="2.1" data-path="PCA.html"><a href="PCA.html#workflow-of-pca"><i class="fa fa-check"></i><b>2.1</b> Workflow of PCA</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="PCA.html"><a href="PCA.html#theorectical"><i class="fa fa-check"></i><b>2.1.1</b> Theorectical</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="PCA.html"><a href="PCA.html#conversion-between-correlation-covaraince-matrices"><i class="fa fa-check"></i><b>2.2</b> Conversion Between Correlation &amp; Covaraince Matrices</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -140,8 +147,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="PCA" class="section level1">
 <h1><span class="header-section-number">Chapter 2</span> Principle Component Analysis</h1>
+<div id="workflow-of-pca" class="section level2">
+<h2><span class="header-section-number">2.1</span> Workflow of PCA</h2>
+<div id="theorectical" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> Theorectical</h3>
+<div id="htmlwidget-018b6a173ccfe178df11" style="width:672px;height:288px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-018b6a173ccfe178df11">{"x":{"diagram":"\ndigraph { //non-directed graph\n      graph [layout = dot]  //layout = dot|neato|twopi|circo|fdp\n      rankdir=TB    // TB|RL|LR, LR: Left to Right orientation\n\n      node [shape = box,\n      style = filled]\n      \n      node [fillcolor = gray]\n      data [label = \"Data\"]\n      \n      node [fillcolor = orange1]  //orange1-4\n      cov [label = \"Cov Matrix\"]\n      eigen [label = \"Eigen-value/vector of Cov Matrix\"]\n      PC [label = \"Principle Components\"]\n      \n      edge [color = grey3, arrowhead = normal, arrowtail = none]\n      cov -> eigen\n      \n      edge [color = grey, arrowhead = normal, arrowtail = none]\n      data -> {eigen cov}\n      eigen -> PC\n      }\n      \n\n      ","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
 <div id="conversion-between-correlation-covaraince-matrices" class="section level2">
-<h2><span class="header-section-number">2.1</span> Conversion Between Correlation &amp; Covaraince Matrices</h2>
+<h2><span class="header-section-number">2.2</span> Conversion Between Correlation &amp; Covaraince Matrices</h2>
 <p><span class="math display" id="eq:cor2cov">\[\mathbf{R} = diag(\mathbf{S})^{\frac{-1}{2}} ~ \mathbf{S} ~ diag(\mathbf{S})^{\frac{-1}{2}}
 \tag{2.1}\]</span></p>
 
