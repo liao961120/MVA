@@ -33,9 +33,13 @@ ellipse(x, scale, centre, level, npoints = 1000)
 
 ### Data Generation
 The `for` loop below is used to generate a data frame with 3 columns(variables):
-    - Column 1: First variable of bivariate normal function ($x_1$)
-    - Column 2: Second variable of bivariate normal function ($x_2$)
-    - Column 3: The contour that $x_1$ & $x_2$ on the same row belongs to.
+
+- Column 1: First variable of bivariate normal function ($x_1$)
+
+- Column 2: Second variable of bivariate normal function ($x_2$)
+
+- Column 3: The contour that $x_1$ & $x_2$ on the same row belongs to.
+
 ```{r}
 library(ellipse)
 
