@@ -149,7 +149,7 @@ prcomp(iris[1:60, 1:3])[["x"]][,1] %>%
 `prcomp(data.frame)[["x"]][,1]` subsets the first column of the principle component scores, which is the scores of the First principle component, i.e. data weighted according to elements of the first (corresponding to the largest eigenvalue) eigenvector. 
 
 ### Self-defined Function
-`qqnorm()` is pretty good but lacking one important features: **labeling points on the Q-Q plot so that identification of the points is possible**.
+`qqnorm()` is pretty good but lacks one important feature: **labeling points on the Q-Q plot so that identification of the points is possible**.
 
 So I wrote my own function `QQplot`, which labels every point on the graph:
 ```{r}
