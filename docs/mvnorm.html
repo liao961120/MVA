@@ -25,7 +25,7 @@
 <meta name="author" content="Yongfu, Liao">
 
 
-<meta name="date" content="2018-04-04">
+<meta name="date" content="2018-04-05">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -107,7 +107,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="./index.html">R Notes for Multivariate Analysis</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i>License</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="mvnorm.html"><a href="mvnorm.html"><i class="fa fa-check"></i><b>1</b> Multivariate Normal Distribution &amp; Covariance Matrix</a><ul>
 <li class="chapter" data-level="1.1" data-path="mvnorm.html"><a href="mvnorm.html#bivariate-normal-contour-map"><i class="fa fa-check"></i><b>1.1</b> Bivariate Normal Contour Map</a><ul>
 <li class="chapter" data-level="1.1.1" data-path="mvnorm.html"><a href="mvnorm.html#ellipse-function"><i class="fa fa-check"></i><b>1.1.1</b> <code>ellipse</code> function</a></li>
@@ -124,10 +126,22 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.1.1" data-path="PCA.html"><a href="PCA.html#conceptual"><i class="fa fa-check"></i><b>2.1.1</b> Conceptual</a></li>
 <li class="chapter" data-level="2.1.2" data-path="PCA.html"><a href="PCA.html#computational-with-r"><i class="fa fa-check"></i><b>2.1.2</b> Computational (with R)</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="PCA.html"><a href="PCA.html#conversion-between-correlation-covaraince-matrices"><i class="fa fa-check"></i><b>2.2</b> Conversion Between Correlation &amp; Covaraince Matrices</a></li>
+<li class="chapter" data-level="2.2" data-path="PCA.html"><a href="PCA.html#conversion-between-correlation-covaraince-matrices"><i class="fa fa-check"></i><b>2.2</b> Conversion Between Correlation &amp; Covaraince Matrices</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="PCA.html"><a href="PCA.html#eigen"><i class="fa fa-check"></i><b>2.2.1</b> <code>eigen()</code></a></li>
 </ul></li>
+<li class="chapter" data-level="2.3" data-path="PCA.html"><a href="PCA.html#scree-plot"><i class="fa fa-check"></i><b>2.3</b> Scree Plot</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="PCA.html"><a href="PCA.html#screeplot-from-base-r"><i class="fa fa-check"></i><b>2.3.1</b> <code>screeplot()</code> from Base R</a></li>
+<li class="chapter" data-level="2.3.2" data-path="PCA.html"><a href="PCA.html#fviz_eig-from-factoextra"><i class="fa fa-check"></i><b>2.3.2</b> <code>fviz_eig()</code> from <code>factoextra</code></a></li>
+<li class="chapter" data-level="2.3.3" data-path="PCA.html"><a href="PCA.html#customized-function"><i class="fa fa-check"></i><b>2.3.3</b> Customized Function</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="PCA.html"><a href="PCA.html#q-q-plot"><i class="fa fa-check"></i><b>2.4</b> Q-Q Plot</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="PCA.html"><a href="PCA.html#qqnorm-from-base-r"><i class="fa fa-check"></i><b>2.4.1</b> <code>qqnorm()</code> from Base R</a></li>
+<li class="chapter" data-level="2.4.2" data-path="PCA.html"><a href="PCA.html#self-defined-function"><i class="fa fa-check"></i><b>2.4.2</b> Self-defined Function</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>Package Used</a></li>
 <li class="divider"></li>
-<li> </li>
+<li></li>
 
 </ul>
 
@@ -206,7 +220,7 @@ All_contours &lt;-<span class="st"> </span>All_contours[<span class="op">-</span
          <span class="dt">title =</span> <span class="st">&quot;Contour Plot&quot;</span>,
          <span class="dt">x =</span> <span class="kw">TeX</span>(<span class="st">&quot;$x_1$&quot;</span>), <span class="dt">y =</span> <span class="kw">TeX</span>(<span class="st">&quot;$x_2$&quot;</span>)
     )</code></pre></div>
-<p><img src="Notes_files/figure-html/unnamed-chunk-5-1.svg" width="672" /></p>
+<p><img src="Notes_files/figure-html/unnamed-chunk-3-1.svg" width="480" /></p>
 </div>
 </div>
 <div id="multivariate-normal-functions" class="section level2">

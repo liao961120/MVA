@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
+<link rel="prev" href="PCA.html">
 
-<link rel="next" href="mvnorm.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -160,29 +160,67 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">R Notes for Multivariate Analysis</h1>
-<h4 class="author"><em>Yongfu, Liao</em></h4>
-<h4 class="date"><em>2018-04-05</em></h4>
-</div>
-<div id="about" class="section level1 unnumbered">
-<h1>About</h1>
-<p>This is a very simplified book about Multivariate Analysis in R. It is written as a note to facilitate my learning of <a href="https://nol2.aca.ntu.edu.tw/nol/coursesearch/print_table.php?course_id=741%20U3520&amp;class=&amp;dpt_code=7410&amp;ser_no=31954&amp;semester=106-2&amp;lang=CH">Multivariate Analysis at NTU</a>, Spring, 2018.</p>
-<p>Feel free to share, modify, and reshare the work. For more information, see the License section below.</p>
-<!-- CC Licenese -->
-<div id="license" class="section level2 unnumbered">
-<h2>License</h2>
-<p><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"  target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">R Notes for Multivariate Analysis</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://liao961120.github.io/MVA.github.io/index.html" property="cc:attributionName" rel="cc:attributionURL" target="_blank">Yongfu, Liao</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">Creative Commons Attribution-NonCommercial 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/liao961120/MVA.github.io" rel="dct:source" target="_blank">https://github.com/liao961120/MVA.github.io</a>.</p>
+<div id="references" class="section level1 unnumbered">
+<h1>Package Used</h1>
 
+<div id="refs" class="references">
+<div>
+<p>Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, and Winston Chang. 2017. <em>Rmarkdown: Dynamic Documents for R</em>. <a href="https://CRAN.R-project.org/package=rmarkdown" class="uri">https://CRAN.R-project.org/package=rmarkdown</a>.</p>
+</div>
+<div>
+<p>Genz, Alan, Frank Bretz, Tetsuhisa Miwa, Xuefei Mi, and Torsten Hothorn. 2018. <em>Mvtnorm: Multivariate Normal and T Distributions</em>. <a href="https://CRAN.R-project.org/package=mvtnorm" class="uri">https://CRAN.R-project.org/package=mvtnorm</a>.</p>
+</div>
+<div>
+<p>Kassambara, Alboukadel, and Fabian Mundt. 2017. <em>Factoextra: Extract and Visualize the Results of Multivariate Data Analyses</em>. <a href="https://CRAN.R-project.org/package=factoextra" class="uri">https://CRAN.R-project.org/package=factoextra</a>.</p>
+</div>
+<div>
+<p>“Mark Heckmann”. 2018. <em>Mat2tex: Tools to Combine R Matrices and Latex Code for Use with Knitr or Sweave</em>.</p>
+</div>
+<div>
+<p>Meschiari, Stefano. 2015. <em>Latex2exp: Use Latex Expressions in Plots</em>. <a href="https://CRAN.R-project.org/package=latex2exp" class="uri">https://CRAN.R-project.org/package=latex2exp</a>.</p>
+</div>
+<div>
+<p>Muller, Kirill. 2017. <em>Bindrcpp: An ’Rcpp’ Interface to Active Bindings</em>. <a href="https://CRAN.R-project.org/package=bindrcpp" class="uri">https://CRAN.R-project.org/package=bindrcpp</a>.</p>
+</div>
+<div>
+<p>Murdoch, Duncan, and E. D. Chow. 2018. <em>Ellipse: Functions for Drawing Ellipses and Ellipse-Like Confidence Regions</em>. <a href="https://CRAN.R-project.org/package=ellipse" class="uri">https://CRAN.R-project.org/package=ellipse</a>.</p>
+</div>
+<div>
+<p>R Core Team. 2017. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/" class="uri">https://www.R-project.org/</a>.</p>
+</div>
+<div>
+<p>Sveidqvist, Knut, Mike Bostock, Chris Pettitt, Mike Daines, and Richard Iannone. 2017. <em>DiagrammeR: Graph/Network Visualization</em>. <a href="https://CRAN.R-project.org/package=DiagrammeR" class="uri">https://CRAN.R-project.org/package=DiagrammeR</a>.</p>
+</div>
+<div>
+<p>Wickham, Hadley, and Winston Chang. 2018. <em>Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics</em>.</p>
+</div>
+<div>
+<p>Wickham, Hadley, Romain Francois, Lionel Henry, and Kirill Muller. 2017. <em>Dplyr: A Grammar of Data Manipulation</em>. <a href="https://CRAN.R-project.org/package=dplyr" class="uri">https://CRAN.R-project.org/package=dplyr</a>.</p>
+</div>
+<div>
+<p>Xie, Yihui. 2015. <em>Dynamic Documents with R and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.name/knitr/" class="uri">http://yihui.name/knitr/</a>.</p>
+</div>
+<div>
+<p>———. 2018a. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown" class="uri">https://CRAN.R-project.org/package=bookdown</a>.</p>
+</div>
+<div>
+<p>———. 2018b. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in R</em>. <a href="https://CRAN.R-project.org/package=knitr" class="uri">https://CRAN.R-project.org/package=knitr</a>.</p>
 </div>
 </div>
+</div>
+
+
+
+
+
+
             </section>
 
           </div>
         </div>
       </div>
+<a href="PCA.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="mvnorm.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

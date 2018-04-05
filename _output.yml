@@ -5,7 +5,7 @@ bookdown::gitbook:
       before: |
         <li><a href="./index.html">R Notes for Multivariate Analysis</a></li>
       after: |
-        <li> </li>
+        <li></li>
     download: ["pdf"]
 bookdown::pdf_book:
   includes:
