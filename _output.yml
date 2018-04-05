@@ -7,6 +7,10 @@ bookdown::gitbook:
       after: |
         <li></li>
     download: ["pdf"]
+    edit: https://github.com/liao961120/MVA.github.io/%s
+    sharing:
+      github: yes
+      facebook: yes
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex
