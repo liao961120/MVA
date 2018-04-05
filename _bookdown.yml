@@ -1,4 +1,5 @@
 book_filename: "Notes"
+repo: https://github.com/liao961120/MVA.github.io
 delete_merged_file: true
 language:
   ui:
