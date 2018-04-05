@@ -29,7 +29,8 @@ knitr::opts_chunk$set(
 
 This is a very simplified book about Multivariate Analysis in R. It is written as a note to facilitate my learning of [Multivariate Analysis at NTU](https://nol2.aca.ntu.edu.tw/nol/coursesearch/print_table.php?course_id=741%20U3520&class=&dpt_code=7410&ser_no=31954&semester=106-2&lang=CH){target="_blank"}, Spring, 2018.
 
-Feel free to share, modify, and reshare the work. For more information, see the License section below.
+Feel free to edit (by clicking <i class="fa fa-edit"></i> on the nav bar) the work if you see some error. Also,  modifying and resharing the work is welcomed. For more information, about improving the work, see the License section below.
+
 
 <!-- CC Licenese -->
 ## License {-}
