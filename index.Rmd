@@ -8,6 +8,10 @@ bibliography: [book.bib, packages.bib]
 biblio-style: "apalike"
 link-citations: yes
 description: "This is a note for multivariate analysis in R."
+github-repo: "liao961120/MVA.github.io"
+favicon: "favicon.ico"
+apple-touch-icon: "icon-152x152.png"
+apple-touch-icon-size: 152
 ---
 
 ```{r setup, include=FALSE}
