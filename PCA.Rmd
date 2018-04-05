@@ -5,7 +5,7 @@ Workflow of PCA
 
 ### Conceptual
 
-```{r echo=FALSE}
+```{r echo=FALSE, fig.dim = c(7, 4)}
 library(DiagrammeR)
 grViz("
 digraph { //non-directed graph
@@ -36,7 +36,7 @@ digraph { //non-directed graph
 ```
 
 ### Computational (with R)
-```{r echo=FALSE}
+```{r echo=FALSE, fig.dim = c(7, 4)}
 grViz("
 digraph { //non-directed graph
       graph [layout = dot]  //layout = dot|neato|twopi|circo|fdp
