@@ -111,7 +111,7 @@ prcomp(iris[,1:3]) %>% screeplot(type="lines")
 
 ### `fviz_eig()` from `factoextra`
 
-For a better looking scree plot function, I recommend `fviz_eig()` from [`factoextra` package](http://www.sthda.com/english/rpkgs/factoextra/){target="_blank"}. `fviz_eig()` has better looking outputs and more customizable plotting parameters, and since it is based on `ggplot2`, you can actually enhance it with the `ggplot2` syntax: `+`.
+For a better-looking scree plot function, I recommend `fviz_eig()` from `factoextra` [@R-factoextra]. `fviz_eig()` has better looking outputs and more customizable plotting parameters, and since it is based on `ggplot2`, you can actually enhance it with the `ggplot2` syntax: `+`.
 ```{r}
 library(factoextra)
 prcomp(iris[,1:3]) %>% fviz_eig()
@@ -203,4 +203,4 @@ prcomp(iris[1:60, 1:3])[["x"]][,1] %>%
 
 
 <!-- FootNotes -->
-[^scree]: Check [`multivariate_fc.R`](https://github.com/liao961120/local_depend/blob/master/R%20functions/multivariate_fc.R){target="_blank"} starting at line 46.
+[^scree]: Check [`multivariate_fc.R`](https://github.com/liao961120/local_depend/blob/master/R%20functions/multivariate_fc.R){target="_blank"}, starting at line 46.
