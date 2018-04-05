@@ -7,7 +7,7 @@ bookdown::gitbook:
       after: |
         <li></li>
     download: ["pdf"]
-    edit: https://github.com/liao961120/MVA.github.io/%s
+    edit: https://github.com/liao961120/MVA.github.io/edit/master/%s
     sharing:
       github: yes
       facebook: yes
