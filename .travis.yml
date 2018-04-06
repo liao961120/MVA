@@ -8,12 +8,19 @@ env:
 
 script:
   - Rscript -e 'bookdown::render_book("index.Rmd", "bookdown::gitbook")'
-  - _deploy.sh
+  #- _deploy.sh
 
 cache:
   packages: yes
   directories:
     - $TRAVIS_BUILD_DIR/_bookdown_files
 
-
-
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN  # Set in travis-ci.org dashboard, marked secure
+  keep-history: true
+  local-dir: docs
+  target-branch: master
+  on:
+    branch: master

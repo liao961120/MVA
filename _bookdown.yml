@@ -8,3 +8,4 @@ rmd_files:
   html: ["index.Rmd", "Multivar_distr.Rmd", "PCA.Rmd", "references.Rmd"]
   latex: ["index_pdf.Rmd", "Multivar_distr.Rmd", "PCA.Rmd", "references.Rmd"]
   epub: ["index.Rmd", "Multivar_distr.Rmd", "PCA.Rmd", "references.Rmd"]
+output_dir: "docs"
