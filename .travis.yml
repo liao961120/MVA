@@ -1,9 +1,5 @@
 language: r
 pandoc_version: 1.19.2.1
-
-#env:
-  #global:
-    #- secure: "EOXw5fuEd9do49pI6y/92Gxfa6JnpNXuhCSe94A0eYqC4wtdeiuBtEl0M4OfoFdCGitw3y2leePZUtu5j0D/42Bb8hSGBCcG1HQr3IaKtzFi7zSmizUUTw+oQFJezUlL21sgYlNLxJBgwUQ9ZYxLr+D5GF/Rg2pvnWTurbB9K3GUpBFlVAd21roxXnzEOtGAGMMe67Y4o5cOpET1Hf6eupIVvrwjuunSWg78k/Znh75SqB54eY3q6G1G7AUAVSgJuzAV87ymsDXjE+HBnwNd49hvMAbd3mxv+BnTzPrQ70WDYIiaPZKGsHFJyuV5ImitlGPLmqKIfxOQguDpwsZzWeATs5aRzatdAjx4sznBTunKnLOqvWL1gT0saeYIfZSU+CWrsTURf7TZBx1YQJVyQe2UkqXRz8tLkpbeyBtbdwSY3L65eeOff235ZtrgHkB7m2UMBoBOGQyc0rpDNzwxWuOjD2G5VDbXckF6Kl4HykReSOY8GbQ5t5k4aNijCyX6JeWCi/+EJ/SrXahUOWYHsA0V1iYdmi6kowhTbktmB0m/HapHwr/39pvByVGu0Yb2RJrJ46/E9tPb8xYRWkYn6CBMbDW9iJGTZVLUaVUM8aJQtITMih3GEWoqAsDmei9zGqreVK2j0X8MGWUFAxBiKyCZ9A7ZzVWRMbLpgK8/Pt4="
     
 script:
   - Rscript -e 'bookdown::render_book("index.Rmd", "bookdown::gitbook")'
