@@ -264,7 +264,18 @@ Sigma &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="
 <div id="covariance-matrix" class="section level3">
 <h3><span class="header-section-number">1.2.2</span> Covariance Matrix</h3>
 <p>Generater covariance and correlation Matricies:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(mat2tex)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Function to check whether package is installed</span>
+is.installed &lt;-<span class="st"> </span><span class="cf">function</span>(mypkg){
+    <span class="kw">is.element</span>(mypkg, <span class="kw">installed.packages</span>()[,<span class="dv">1</span>])
+} 
+
+<span class="co"># check if package &quot;hydroGOF&quot; is installed</span>
+<span class="cf">if</span> (<span class="op">!</span><span class="kw">is.installed</span>(<span class="st">&quot;mat2tex&quot;</span>)){
+    <span class="kw">library</span>(devtools)
+    <span class="kw">install_github</span>(<span class="st">&quot;markheckmann/mat2tex&quot;</span>)
+}
+
+<span class="kw">library</span>(mat2tex)
 cov.mt &lt;-<span class="st"> </span><span class="kw">cov</span>(iris[,<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]) ## Cov Matrix of variable 1~4
 cor.mt &lt;-<span class="st"> </span><span class="kw">cor</span>(iris[,<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]) ## Cor Matrix of variable 1~4</code></pre></div>
 <p>Covariance matrix <span class="math inline">\(= \begin{pmatrix}  0.69 &amp; -0.04 &amp; 1.27 &amp; 0.52 \\  -0.04 &amp; 0.19 &amp; -0.33 &amp; -0.12 \\  1.27 &amp; -0.33 &amp; 3.12 &amp; 1.30 \\  0.52 &amp; -0.12 &amp; 1.30 &amp; 0.58 \\  \end{pmatrix}\)</span></p>

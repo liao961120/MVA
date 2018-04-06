@@ -8,7 +8,7 @@ git clone -b gh-pages \
   book-output
 cd book-output
 git rm -rf *
-cp -r ../docs/* ./
+cp -r ../_book/* ./
 git add --all *
-git commit -m"Update the book"
+git commit -m "Update the book"
 git push -q origin gh-pages
