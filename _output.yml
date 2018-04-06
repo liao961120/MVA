@@ -1,0 +1,21 @@
+bookdown::gitbook:
+  css: style.css
+  config:
+    toc:
+      before: |
+        <li><a href="./index.html">R Notes for Multivariate Analysis</a></li>
+      after: |
+        <li></li>
+    download: ["pdf"]
+    edit: https://github.com/liao961120/MVA.github.io/edit/master/%s
+    sharing:
+      github: yes
+      facebook: no
+      twitter: no
+bookdown::pdf_book:
+  includes:
+    in_header: preamble.tex
+  latex_engine: xelatex
+  citation_package: natbib
+  keep_tex: no
+bookdown::epub_book: default

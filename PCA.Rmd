@@ -1,0 +1,219 @@
+# Principle Component Analysis {#PCA}
+
+Workflow of PCA
+--------------------------------
+
+### Conceptual
+
+```{r echo=FALSE, fig.dim = c(7, 4)}
+library(DiagrammeR)
+grViz("
+digraph { //non-directed graph
+      graph [layout = dot]  //layout = dot|neato|twopi|circo|fdp
+      rankdir=LR    // TB|RL|LR, LR: Left to Right orientation
+
+      node [shape = box,
+      style = filled,  margin=0.3]
+      
+      node [fillcolor = gray]
+      data [label = 'Data']
+      
+      node [fillcolor = orange1]  //orange1-4
+      cov [label = 'Cov Matrix']
+      eigen [label = 'Eigenvalue & Eigenvector']
+      PC [label = 'Principle Components' fillcolor = OrangeRed]
+      
+      edge [color = grey3, arrowhead = normal, arrowtail = none]
+      cov -> eigen [label='Compute']
+      
+      edge [color = grey, arrowhead = normal, arrowtail = none]
+      data -> cov [label='Compute']
+      data -> eigen [label='Input']
+      eigen -> PC [label='Rotate']
+}
+
+      ")
+```
+
+### Computational (with R)
+```{r echo=FALSE, fig.dim = c(7, 4)}
+grViz("
+digraph { //non-directed graph
+      graph [layout = dot]  //layout = dot|neato|twopi|circo|fdp
+      rankdir=LR    // TB|RL|LR, LR: Left to Right orientation
+
+      node [shape = box,
+      style = filled,  margin=0.18]
+      
+      node [fillcolor = gray]
+      data [label = 'Data']
+      PC [label = 'Principle Components' fillcolor = OrangeRed]
+      
+      node [fillcolor = WhiteSmoke, shape = oval]  //orange1-4
+      sdev [label = 'sdev: std of PCs']
+      rotation [label = 'rotation: Loading of PCs on origin vars']
+      x [label = 'x: Rotated Data']
+
+      node [fillcolor = Gold, shape = box]
+      Scree [label = 'Scree Plot']
+      Interpret [label = 'Interpret grouping of vars']
+      QQplot [label = 'Q-Q Plot: Single PC']
+      scatter [label = 'Scatter Plot of 2 PCs']
+      
+      edge [color = Darkgray, arrowhead = normal, arrowtail = none]
+      data -> PC [label='prcomp()']
+      sdev -> Scree [label = 'factoextra::fviz_eig()']
+      rotation -> Interpret
+      x -> {QQplot scatter}
+
+      edge [style=dashed, color = grey, arrowhead = none, arrowtail = none]
+      PC -> {sdev rotation x}
+}
+
+      ")
+```
+
+- Note: `sdev` of `prcomp()` are **Standard Deviations**. To get the eigenvalues of the covariance (correlation) matrix, or  equivalently, variances of the principle components, you need to **square `sdev`**.
+
+
+Conversion Between Correlation & Covaraince Matrices
+------------------------------------------------------
+
+### `prcomp()`
+The function `prcomp()` in base R `stats` package performs principle component analysis to input `data.frame`(with observations as rows and variables as columns), but it returns neither covariance nor correlation matrix. You can compute them directly by passing `data.frame` to `cor()` and `cov()` directly in R without any additional package.
+
+```{block2, type="bs-callout bs-callout-warning"}
+[prcomp() vs. princomp()]{.callout-warning-head}
+
+There is another function, `princomp()`, in `stats` that performs PCA. This function is based on spectral decomposition[^spectral] while `prcomp()` is based on SVD[^pca_svd]. SVD has greater numeric accuracy, so `prcomp()` is preferred.
+```
+
+### Covariance to Correlation
+
+Sometimes there is no raw data but only covariance or correlation matrix, and you may want to convert one to another. This can be done by using simple matrix multiplication, based on the fact that
+
+$$\mathbf{R} = diag(\mathbf{S})^{\frac{-1}{2}} ~ \mathbf{S} ~ diag(\mathbf{S})^{\frac{-1}{2}}
+(\#eq:cov2cor)$$
+
+, where $\mathbf{R}$ is the correlation matrix,  $\mathbf{S}$ is the covariance matrix, and $diag(\mathbf{S})$ is the diagonal matrix composed of  diagonal elements of $\mathbf{S}$.
+
+### `eigen()`
+
+After obtaining the covariance or correlation matrix, direct computation of eigenvalue and eigenvectors is straightforward: pass the matrix to base R `eigen()` function.
+```{r}
+cov(iris[,1:3]) %>% eigen()
+```
+
+Scree Plot
+-------------------------------------
+
+Scree plot is an important tool for determining the importance of principle components. Although the logic of plotting scree plots is easy, it may be quite annoying for repeating the code every time.
+
+
+### `screeplot()` from Base R
+
+There is a ready-written function for scree plot in `stats` package, but the output is terrible:
+```{r}
+prcomp(iris[,1:3]) %>% screeplot(type="lines")
+```
+
+
+### `fviz_eig()` from `factoextra`
+
+For a better-looking scree plot function, I recommend `fviz_eig()` from `factoextra` [@R-factoextra]. `fviz_eig()` has better looking outputs and more customizable plotting parameters, and since it is based on `ggplot2`, you can actually enhance it with the `ggplot2` syntax: `+`.
+```{r}
+library(factoextra)
+prcomp(iris[,1:3]) %>% fviz_eig()
+```
+
+```{r}
+prcomp(iris[,1:3]) %>% 
+    fviz_eig(choice = "eigenvalue", # y as eigenvalue
+             geom = "line",
+             addlabels = T) +
+    scale_y_continuous(limits = c(0, 5))
+```
+
+### Customized Function
+
+I have OCD with plotting, so not completely satisfied with `factoextra::fviz_eig()`. So I created my own `scree_plot()` by building on `fviz_eig()`[^scree], which  supports **double y-axis**: one showing eigenvalue, the other proportion of total variance explained. 
+
+
+Q-Q Plot
+-----------------------------------
+
+Q-Q plots are for checking the normality assumuption and are also useful for detecting outlyers. Principle components are linear combinations of the original variables, so if the original variables come from a multivariate normal distribution, principle components are expected to have normal distributions.
+
+
+### `qqnorm()` from Base R
+
+There is also a base R `qqnorm()` function, which plots sample quantiles against theoretical quantiles obtain from the standard normal distribution.
+```{r}
+prcomp(iris[1:60, 1:3])[["x"]][,1] %>% 
+    qqnorm()
+```
+
+`prcomp(data.frame)[["x"]]` returns the principle component scores, i.e. data that are **rotated** or **weighted** by the elements of the eigenvectors.
+
+`prcomp(data.frame)[["x"]][,1]` subsets the first column of the principle component scores, which is the scores of the First principle component, i.e. data weighted according to elements of the first (corresponding to the largest eigenvalue) eigenvector. 
+
+### Self-defined Function
+`qqnorm()` is pretty good but lacks one important feature: **labeling points on the Q-Q plot so that identification of the points is possible**.
+
+So I wrote my own function `QQplot`, which labels every point on the graph:
+```{r}
+QQplot <- function(x, ID="none", 
+                   theme=NULL, color="red", text=TRUE,
+                   text_adj=
+                       c(hjust=-0.1, vjust=0, size=3)) {
+    library(dplyr)
+    library(ggplot2)
+    
+    x <- as_data_frame(x) 
+    n <- nrow(x)
+    quantiles <- qnorm(p=seq(0.5/n, 1-0.5/n, 1/n))
+    
+    if (ID == "none") { # assign ID if not passed
+        ID <- as.character(1:n)
+    } else {
+        ID <- as_data_frame(ID)
+        ID <- as.character(ID[[colnames(ID)]])
+        }
+    
+    if (text == TRUE) {
+        text <- geom_text(aes(label=ID),
+                              hjust=text_adj[1],
+                              vjust=text_adj[2],
+                              size = text_adj[3])
+    } else {text <- NULL}
+    
+    data <- cbind(ID, x)
+    colnames(data) <- c("ID", "x")
+    data <- data %>% arrange(x) %>% mutate(quantile=quantiles)
+    
+    pl <- ggplot(data, aes(x=quantiles, y=x))+
+        geom_point(color=color)+
+        text + theme +
+        labs(x="Theoretical Quantile",
+             y="x",
+             title="Q-Q Plot")
+    pl
+}
+```
+
+```{r}
+prcomp(iris[1:60, 1:3])[["x"]][,1] %>%
+    QQplot()
+```
+
+
+
+
+
+
+<!-- FootNotes -->
+[^scree]: Check [`multivariate_fc.R`](https://github.com/liao961120/local_depend/blob/master/R%20functions/multivariate_fc.R){target="_blank"}, starting at line 46.
+
+[^pca_svd]: You can check the answers at [Stack Overflow](https://stats.stackexchange.com/questions/20101/what-is-the-difference-between-r-functions-prcomp-and-princomp){target="_blank"}
+
+[^spectral]: The Conceptual workflow of PCA at Section [2.1.1](#conceptual) is based on spectral decomposition.

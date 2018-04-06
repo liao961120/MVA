@@ -1,0 +1,40 @@
+--- 
+title: "R Notes for Multivariate Analysis"
+author: "Yongfu, Liao"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: "apalike"
+link-citations: yes
+description: "This is a note for multivariate analysis in R."
+github-repo: "liao961120/MVA.github.io"
+favicon: "favicon.ico"
+apple-touch-icon: "icon-152x152.png"
+apple-touch-icon-size: 152
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	message = FALSE,
+	warning = FALSE,
+	dev = 'svg',
+	fig.dim = c(5, 3),
+	fig.height = 3, 
+	comment = ""
+)
+```
+
+# About {-}
+
+[![Build Status](https://travis-ci.org/liao961120/MVA.github.io.svg?branch=master)](https://travis-ci.org/liao961120/MVA.github.io){target="_blank"}
+
+This is a very simplified book about Multivariate Analysis in R. It is written as a note to facilitate my learning of [Multivariate Analysis at NTU](https://nol2.aca.ntu.edu.tw/nol/coursesearch/print_table.php?course_id=741%20U3520&class=&dpt_code=7410&ser_no=31954&semester=106-2&lang=CH){target="_blank"}, Spring, 2018.
+
+Feel free to edit (by clicking <i class="fa fa-edit"></i> on the nav bar) if you see any error. Also, forking, modifying, and redistributing is welcomed. For more information about improving this work, see the License section below.
+
+
+<!-- CC Licenese -->
+## License {-}
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"  target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">R Notes for Multivariate Analysis</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://liao961120.github.io/MVA.github.io/index.html" property="cc:attributionName" rel="cc:attributionURL" target="_blank">Yongfu, Liao</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">Creative Commons Attribution-NonCommercial 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/liao961120/MVA.github.io" rel="dct:source" target="_blank">https://github.com/liao961120/MVA.github.io</a>.
