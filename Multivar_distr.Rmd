@@ -15,7 +15,10 @@ theme <- theme(axis.text.x = element_text(size = 7, face = "plain", angle = 30),
 Bivariate Normal Contour Map
 -----------------------------------
 
-### `ellipse` function
+### `ellipse()`
+
+`ellipse()` from ellipse [@R-ellipse] is used to generate ellipse data based on a correlation/covariance matrix.
+
 ```r
 ellipse(x, scale, centre, level, npoints = 1000)
 ```
@@ -29,7 +32,7 @@ ellipse(x, scale, centre, level, npoints = 1000)
 
 - `npoints`: number of points used to draw the contour.
 
-`ellipse` returns a **matrix** with dimension (`npoints` $\times$ 2), which can be used to plot contour.
+`ellipse` returns a **matrix** with dim(`npoints` $\times$ 2), which can be used to plot contour.
 
 ### Data Generation
 The `for` loop below is used to generate a data frame with 3 columns(variables):
