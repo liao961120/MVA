@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>R Notes for Multivariate Analysis</title>
   <meta name="description" content="This is a note for multivariate analysis in R.">
-  <meta name="generator" content="bookdown 0.6 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="R Notes for Multivariate Analysis" />
   <meta property="og:type" content="book" />
@@ -50,7 +50,7 @@
 <script src="libs/htmlwidgets-1.0/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-<script src="libs/grViz-binding-0.9.2/grViz.js"></script>
+<script src="libs/grViz-binding-1.0.0/grViz.js"></script>
 
 
 <style type="text/css">
@@ -167,10 +167,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <div id="refs" class="references">
 <div>
-<p>Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, and Winston Chang. 2017. <em>Rmarkdown: Dynamic Documents for R</em>. <a href="https://CRAN.R-project.org/package=rmarkdown" class="uri">https://CRAN.R-project.org/package=rmarkdown</a>.</p>
+<p>Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, and Winston Chang. 2018. <em>Rmarkdown: Dynamic Documents for R</em>. <a href="https://CRAN.R-project.org/package=rmarkdown" class="uri">https://CRAN.R-project.org/package=rmarkdown</a>.</p>
 </div>
 <div>
 <p>Genz, Alan, Frank Bretz, Tetsuhisa Miwa, Xuefei Mi, and Torsten Hothorn. 2018. <em>Mvtnorm: Multivariate Normal and T Distributions</em>. <a href="https://CRAN.R-project.org/package=mvtnorm" class="uri">https://CRAN.R-project.org/package=mvtnorm</a>.</p>
+</div>
+<div>
+<p>Iannone, Richard. 2018. <em>DiagrammeR: Graph/Network Visualization</em>. <a href="https://CRAN.R-project.org/package=DiagrammeR" class="uri">https://CRAN.R-project.org/package=DiagrammeR</a>.</p>
 </div>
 <div>
 <p>Kassambara, Alboukadel, and Fabian Mundt. 2017. <em>Factoextra: Extract and Visualize the Results of Multivariate Data Analyses</em>. <a href="https://CRAN.R-project.org/package=factoextra" class="uri">https://CRAN.R-project.org/package=factoextra</a>.</p>
@@ -182,28 +185,25 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Meschiari, Stefano. 2015. <em>Latex2exp: Use Latex Expressions in Plots</em>. <a href="https://CRAN.R-project.org/package=latex2exp" class="uri">https://CRAN.R-project.org/package=latex2exp</a>.</p>
 </div>
 <div>
-<p>Muller, Kirill. 2017. <em>Bindrcpp: An ’Rcpp’ Interface to Active Bindings</em>. <a href="https://CRAN.R-project.org/package=bindrcpp" class="uri">https://CRAN.R-project.org/package=bindrcpp</a>.</p>
+<p>Murdoch, Duncan, and E. D. Chow. 2018. <em>Ellipse: Functions for Drawing Ellipses and Ellipse-Like Confidence Regions</em>. <a href="https://CRAN.R-project.org/package=ellipse" class="uri">https://CRAN.R-project.org/package=ellipse</a>.</p>
 </div>
 <div>
-<p>Murdoch, Duncan, and E. D. Chow. 2018. <em>Ellipse: Functions for Drawing Ellipses and Ellipse-Like Confidence Regions</em>. <a href="https://CRAN.R-project.org/package=ellipse" class="uri">https://CRAN.R-project.org/package=ellipse</a>.</p>
+<p>Müller, Kirill. 2018. <em>Bindrcpp: An ’Rcpp’ Interface to Active Bindings</em>. <a href="https://CRAN.R-project.org/package=bindrcpp" class="uri">https://CRAN.R-project.org/package=bindrcpp</a>.</p>
 </div>
 <div>
 <p>R Core Team. 2017. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/" class="uri">https://www.R-project.org/</a>.</p>
 </div>
 <div>
-<p>Sveidqvist, Knut, Mike Bostock, Chris Pettitt, Mike Daines, and Richard Iannone. 2017. <em>DiagrammeR: Graph/Network Visualization</em>. <a href="https://CRAN.R-project.org/package=DiagrammeR" class="uri">https://CRAN.R-project.org/package=DiagrammeR</a>.</p>
+<p>Wickham, Hadley, and Winston Chang. 2016. <em>Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics</em>. <a href="https://CRAN.R-project.org/package=ggplot2" class="uri">https://CRAN.R-project.org/package=ggplot2</a>.</p>
 </div>
 <div>
-<p>Wickham, Hadley, and Winston Chang. 2018. <em>Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics</em>.</p>
-</div>
-<div>
-<p>Wickham, Hadley, Romain Francois, Lionel Henry, and Kirill Muller. 2017. <em>Dplyr: A Grammar of Data Manipulation</em>. <a href="https://CRAN.R-project.org/package=dplyr" class="uri">https://CRAN.R-project.org/package=dplyr</a>.</p>
+<p>Wickham, Hadley, Romain Francois, Lionel Henry, and Kirill Müller. 2017. <em>Dplyr: A Grammar of Data Manipulation</em>. <a href="https://CRAN.R-project.org/package=dplyr" class="uri">https://CRAN.R-project.org/package=dplyr</a>.</p>
 </div>
 <div>
 <p>Xie, Yihui. 2015. <em>Dynamic Documents with R and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.name/knitr/" class="uri">http://yihui.name/knitr/</a>.</p>
 </div>
 <div>
-<p>———. 2018a. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown" class="uri">https://CRAN.R-project.org/package=bookdown</a>.</p>
+<p>———. 2018a. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://github.com/rstudio/bookdown" class="uri">https://github.com/rstudio/bookdown</a>.</p>
 </div>
 <div>
 <p>———. 2018b. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in R</em>. <a href="https://CRAN.R-project.org/package=knitr" class="uri">https://CRAN.R-project.org/package=knitr</a>.</p>
@@ -242,10 +242,11 @@ gitbook.start({
 "facebook": false,
 "twitter": false,
 "google": false,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
