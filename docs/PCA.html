@@ -25,7 +25,7 @@
 <meta name="author" content="Yongfu, Liao">
 
 
-<meta name="date" content="2018-04-05">
+<meta name="date" content="2018-04-06">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -127,7 +127,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.1.2" data-path="PCA.html"><a href="PCA.html#computational-with-r"><i class="fa fa-check"></i><b>2.1.2</b> Computational (with R)</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="PCA.html"><a href="PCA.html#conversion-between-correlation-covaraince-matrices"><i class="fa fa-check"></i><b>2.2</b> Conversion Between Correlation &amp; Covaraince Matrices</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="PCA.html"><a href="PCA.html#eigen"><i class="fa fa-check"></i><b>2.2.1</b> <code>eigen()</code></a></li>
+<li class="chapter" data-level="2.2.1" data-path="PCA.html"><a href="PCA.html#prcomp"><i class="fa fa-check"></i><b>2.2.1</b> <code>prcomp()</code></a></li>
+<li class="chapter" data-level="2.2.2" data-path="PCA.html"><a href="PCA.html#covariance-to-correlation"><i class="fa fa-check"></i><b>2.2.2</b> Covariance to Correlation</a></li>
+<li class="chapter" data-level="2.2.3" data-path="PCA.html"><a href="PCA.html#eigen"><i class="fa fa-check"></i><b>2.2.3</b> <code>eigen()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="PCA.html"><a href="PCA.html#scree-plot"><i class="fa fa-check"></i><b>2.3</b> Scree Plot</a><ul>
 <li class="chapter" data-level="2.3.1" data-path="PCA.html"><a href="PCA.html#screeplot-from-base-r"><i class="fa fa-check"></i><b>2.3.1</b> <code>screeplot()</code> from Base R</a></li>
@@ -166,13 +168,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">2.1</span> Workflow of PCA</h2>
 <div id="conceptual" class="section level3">
 <h3><span class="header-section-number">2.1.1</span> Conceptual</h3>
-<div id="htmlwidget-b52a37c7324cb27ba5cd" style="width:672px;height:384px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b52a37c7324cb27ba5cd">{"x":{"diagram":"\ndigraph { //non-directed graph\n      graph [layout = dot]  //layout = dot|neato|twopi|circo|fdp\n      rankdir=LR    // TB|RL|LR, LR: Left to Right orientation\n\n      node [shape = box,\n      style = filled,  margin=0.3]\n      \n      node [fillcolor = gray]\n      data [label = \"Data\"]\n      \n      node [fillcolor = orange1]  //orange1-4\n      cov [label = \"Cov Matrix\"]\n      eigen [label = \"Eigenvalue & Eigenvector\"]\n      PC [label = \"Principle Components\" fillcolor = OrangeRed]\n      \n      edge [color = grey3, arrowhead = normal, arrowtail = none]\n      cov -> eigen [label=\"Compute\"]\n      \n      edge [color = grey, arrowhead = normal, arrowtail = none]\n      data -> cov [label=\"Compute\"]\n      data -> eigen [label=\"Input\"]\n      eigen -> PC [label=\"Rotate\"]\n}\n\n      ","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-f2b0fecea843c85a2d93" style="width:672px;height:384px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f2b0fecea843c85a2d93">{"x":{"diagram":"\ndigraph { //non-directed graph\n      graph [layout = dot]  //layout = dot|neato|twopi|circo|fdp\n      rankdir=LR    // TB|RL|LR, LR: Left to Right orientation\n\n      node [shape = box,\n      style = filled,  margin=0.3]\n      \n      node [fillcolor = gray]\n      data [label = \"Data\"]\n      \n      node [fillcolor = orange1]  //orange1-4\n      cov [label = \"Cov Matrix\"]\n      eigen [label = \"Eigenvalue & Eigenvector\"]\n      PC [label = \"Principle Components\" fillcolor = OrangeRed]\n      \n      edge [color = grey3, arrowhead = normal, arrowtail = none]\n      cov -> eigen [label=\"Compute\"]\n      \n      edge [color = grey, arrowhead = normal, arrowtail = none]\n      data -> cov [label=\"Compute\"]\n      data -> eigen [label=\"Input\"]\n      eigen -> PC [label=\"Rotate\"]\n}\n\n      ","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="computational-with-r" class="section level3">
 <h3><span class="header-section-number">2.1.2</span> Computational (with R)</h3>
-<div id="htmlwidget-a51671036a33e01dbeb1" style="width:672px;height:384px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a51671036a33e01dbeb1">{"x":{"diagram":"\ndigraph { //non-directed graph\n      graph [layout = dot]  //layout = dot|neato|twopi|circo|fdp\n      rankdir=LR    // TB|RL|LR, LR: Left to Right orientation\n\n      node [shape = box,\n      style = filled,  margin=0.18]\n      \n      node [fillcolor = gray]\n      data [label = \"Data\"]\n      PC [label = \"Principle Components\" fillcolor = OrangeRed]\n      \n      node [fillcolor = WhiteSmoke, shape = oval]  //orange1-4\n      sdev [label = \"sdev: std of PCs\"]\n      rotation [label = \"rotation: Loading of PCs on origin vars\"]\n      x [label = \"x: Rotated Data\"]\n\n      node [fillcolor = Gold, shape = box]\n      Scree [label = \"Scree Plot\"]\n      Interpret [label = \"Interpret grouping of vars\"]\n      QQplot [label = \"Q-Q Plot: Single PC\"]\n      scatter [label = \"Scatter Plot of 2 PCs\"]\n      \n      edge [color = Darkgray, arrowhead = normal, arrowtail = none]\n      data -> PC [label=\"prcomp()\"]\n      sdev -> Scree [label = \"factoextra::fviz_eig()\"]\n      rotation -> Interpret\n      x -> {QQplot scatter}\n\n      edge [style=dashed, color = grey, arrowhead = none, arrowtail = none]\n      PC -> {sdev rotation x}\n}\n\n      ","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-435778c05811fc543b42" style="width:672px;height:384px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-435778c05811fc543b42">{"x":{"diagram":"\ndigraph { //non-directed graph\n      graph [layout = dot]  //layout = dot|neato|twopi|circo|fdp\n      rankdir=LR    // TB|RL|LR, LR: Left to Right orientation\n\n      node [shape = box,\n      style = filled,  margin=0.18]\n      \n      node [fillcolor = gray]\n      data [label = \"Data\"]\n      PC [label = \"Principle Components\" fillcolor = OrangeRed]\n      \n      node [fillcolor = WhiteSmoke, shape = oval]  //orange1-4\n      sdev [label = \"sdev: std of PCs\"]\n      rotation [label = \"rotation: Loading of PCs on origin vars\"]\n      x [label = \"x: Rotated Data\"]\n\n      node [fillcolor = Gold, shape = box]\n      Scree [label = \"Scree Plot\"]\n      Interpret [label = \"Interpret grouping of vars\"]\n      QQplot [label = \"Q-Q Plot: Single PC\"]\n      scatter [label = \"Scatter Plot of 2 PCs\"]\n      \n      edge [color = Darkgray, arrowhead = normal, arrowtail = none]\n      data -> PC [label=\"prcomp()\"]\n      sdev -> Scree [label = \"factoextra::fviz_eig()\"]\n      rotation -> Interpret\n      x -> {QQplot scatter}\n\n      edge [style=dashed, color = grey, arrowhead = none, arrowtail = none]\n      PC -> {sdev rotation x}\n}\n\n      ","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <ul>
 <li>Note: <code>sdev</code> of <code>prcomp()</code> are <strong>Standard Deviations</strong>. To get the eigenvalues of the covariance (correlation) matrix, or equivalently, variances of the principle components, you need to <strong>square <code>sdev</code></strong>.</li>
 </ul>
@@ -180,13 +182,25 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="conversion-between-correlation-covaraince-matrices" class="section level2">
 <h2><span class="header-section-number">2.2</span> Conversion Between Correlation &amp; Covaraince Matrices</h2>
+<div id="prcomp" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> <code>prcomp()</code></h3>
 <p>The function <code>prcomp()</code> in base R <code>stats</code> package performs principle component analysis to input <code>data.frame</code>(with observations as rows and variables as columns), but it returns neither covariance nor correlation matrix. You can compute them directly by passing <code>data.frame</code> to <code>cor()</code> and <code>cov()</code> directly in R without any additional package.</p>
+
+<div class="bs-callout bs-callout-warning">
+<p><span class="callout-warning-head">prcomp() vs. princomp()</span></p>
+There is another function, <code>princomp()</code>, in <code>stats</code> that performs PCA. This function is based on spectral decomposition<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> while <code>prcomp()</code> is based on SVD<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>. SVD has greater numeric accuracy, so <code>prcomp()</code> is preferred.
+</div>
+
+</div>
+<div id="covariance-to-correlation" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> Covariance to Correlation</h3>
 <p>Sometimes there is no raw data but only covariance or correlation matrix, and you may want to convert one to another. This can be done by using simple matrix multiplication, based on the fact that</p>
 <p><span class="math display" id="eq:cov2cor">\[\mathbf{R} = diag(\mathbf{S})^{\frac{-1}{2}} ~ \mathbf{S} ~ diag(\mathbf{S})^{\frac{-1}{2}}
 \tag{2.1}\]</span></p>
 <p>, where <span class="math inline">\(\mathbf{R}\)</span> is the correlation matrix, <span class="math inline">\(\mathbf{S}\)</span> is the covariance matrix, and <span class="math inline">\(diag(\mathbf{S})\)</span> is the diagonal matrix composed of diagonal elements of <span class="math inline">\(\mathbf{S}\)</span>.</p>
+</div>
 <div id="eigen" class="section level3">
-<h3><span class="header-section-number">2.2.1</span> <code>eigen()</code></h3>
+<h3><span class="header-section-number">2.2.3</span> <code>eigen()</code></h3>
 <p>After obtaining the covariance or correlation matrix, direct computation of eigenvalue and eigenvectors is straightforward: pass the matrix to base R <code>eigen()</code> function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cov</span>(iris[,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">eigen</span>()</code></pre></div>
 <pre><code>eigen() decomposition
@@ -207,24 +221,24 @@ $vectors
 <h3><span class="header-section-number">2.3.1</span> <code>screeplot()</code> from Base R</h3>
 <p>There is a ready-written function for scree plot in <code>stats</code> package, but the output is terrible:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">prcomp</span>(iris[,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">screeplot</span>(<span class="dt">type=</span><span class="st">&quot;lines&quot;</span>)</code></pre></div>
-<p><img src="Notes_files/figure-html/unnamed-chunk-12-1.svg" width="480" /></p>
+<p><img src="Notes_files/figure-html/unnamed-chunk-13-1.svg" width="480" /></p>
 </div>
 <div id="fviz_eig-from-factoextra" class="section level3">
 <h3><span class="header-section-number">2.3.2</span> <code>fviz_eig()</code> from <code>factoextra</code></h3>
 <p>For a better-looking scree plot function, I recommend <code>fviz_eig()</code> from <code>factoextra</code> <span class="citation">(Kassambara and Mundt <a href="#ref-R-factoextra">2017</a>)</span>. <code>fviz_eig()</code> has better looking outputs and more customizable plotting parameters, and since it is based on <code>ggplot2</code>, you can actually enhance it with the <code>ggplot2</code> syntax: <code>+</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(factoextra)
 <span class="kw">prcomp</span>(iris[,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">fviz_eig</span>()</code></pre></div>
-<p><img src="Notes_files/figure-html/unnamed-chunk-13-1.svg" width="480" /></p>
+<p><img src="Notes_files/figure-html/unnamed-chunk-14-1.svg" width="480" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">prcomp</span>(iris[,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">fviz_eig</span>(<span class="dt">choice =</span> <span class="st">&quot;eigenvalue&quot;</span>, <span class="co"># y as eigenvalue</span>
              <span class="dt">geom =</span> <span class="st">&quot;line&quot;</span>,
              <span class="dt">addlabels =</span> T) <span class="op">+</span>
 <span class="st">    </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">5</span>))</code></pre></div>
-<p><img src="Notes_files/figure-html/unnamed-chunk-14-1.svg" width="480" /></p>
+<p><img src="Notes_files/figure-html/unnamed-chunk-15-1.svg" width="480" /></p>
 </div>
 <div id="customized-function" class="section level3">
 <h3><span class="header-section-number">2.3.3</span> Customized Function</h3>
-<p>I have OCD with plotting, so not completely satisfied with <code>factoextra::fviz_eig()</code>. So I created my own <code>scree_plot()</code> by building on <code>fviz_eig()</code><a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>, which supports <strong>double y-axis</strong>: one showing eigenvalue, the other proportion of total variance explained.</p>
+<p>I have OCD with plotting, so not completely satisfied with <code>factoextra::fviz_eig()</code>. So I created my own <code>scree_plot()</code> by building on <code>fviz_eig()</code><a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>, which supports <strong>double y-axis</strong>: one showing eigenvalue, the other proportion of total variance explained.</p>
 </div>
 </div>
 <div id="q-q-plot" class="section level2">
@@ -235,7 +249,7 @@ $vectors
 <p>There is also a base R <code>qqnorm()</code> function, which plots sample quantiles against theoretical quantiles obtain from the standard normal distribution.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">prcomp</span>(iris[<span class="dv">1</span><span class="op">:</span><span class="dv">60</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>])[[<span class="st">&quot;x&quot;</span>]][,<span class="dv">1</span>] <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">qqnorm</span>()</code></pre></div>
-<p><img src="Notes_files/figure-html/unnamed-chunk-15-1.svg" width="480" /></p>
+<p><img src="Notes_files/figure-html/unnamed-chunk-16-1.svg" width="480" /></p>
 <p><code>prcomp(data.frame)[[&quot;x&quot;]]</code> returns the principle component scores, i.e. data that are <strong>rotated</strong> or <strong>weighted</strong> by the elements of the eigenvectors.</p>
 <p><code>prcomp(data.frame)[[&quot;x&quot;]][,1]</code> subsets the first column of the principle component scores, which is the scores of the First principle component, i.e. data weighted according to elements of the first (corresponding to the largest eigenvalue) eigenvector.</p>
 </div>
@@ -282,7 +296,7 @@ $vectors
 }</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">prcomp</span>(iris[<span class="dv">1</span><span class="op">:</span><span class="dv">60</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>])[[<span class="st">&quot;x&quot;</span>]][,<span class="dv">1</span>] <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">QQplot</span>()</code></pre></div>
-<p><img src="Notes_files/figure-html/unnamed-chunk-17-1.svg" width="480" /></p>
+<p><img src="Notes_files/figure-html/unnamed-chunk-18-1.svg" width="480" /></p>
 <!-- FootNotes -->
 
 </div>
@@ -297,7 +311,9 @@ $vectors
 <div class="footnotes">
 <hr />
 <ol start="1">
-<li id="fn1"><p>Check <a href="https://github.com/liao961120/local_depend/blob/master/R%20functions/multivariate_fc.R" target="_blank"><code>multivariate_fc.R</code></a>, starting at line 46.<a href="PCA.html#fnref1">↩</a></p></li>
+<li id="fn1"><p>The Conceptual workflow of PCA at Section <a href="PCA.html#conceptual">2.1.1</a> is based on spectral decomposition.<a href="PCA.html#fnref1">↩</a></p></li>
+<li id="fn2"><p>You can check the answers at <a href="https://stats.stackexchange.com/questions/20101/what-is-the-difference-between-r-functions-prcomp-and-princomp" target="_blank">Stack Overflow</a><a href="PCA.html#fnref2">↩</a></p></li>
+<li id="fn3"><p>Check <a href="https://github.com/liao961120/local_depend/blob/master/R%20functions/multivariate_fc.R" target="_blank"><code>multivariate_fc.R</code></a>, starting at line 46.<a href="PCA.html#fnref3">↩</a></p></li>
 </ol>
 </div>
             </section>

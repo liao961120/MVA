@@ -79,7 +79,16 @@ digraph { //non-directed graph
 Conversion Between Correlation & Covaraince Matrices
 ------------------------------------------------------
 
-The function `prcomp()` in base R `stats` package performs principle component analysis to input `data.frame`(with observations as rows and variables as columns), but it returns neither covariance nor correlation matrix. You can compute them directly by passing `data.frame` to `cor()` and `cov()` directly in R without any additional package.   
+### `prcomp()`
+The function `prcomp()` in base R `stats` package performs principle component analysis to input `data.frame`(with observations as rows and variables as columns), but it returns neither covariance nor correlation matrix. You can compute them directly by passing `data.frame` to `cor()` and `cov()` directly in R without any additional package.
+
+```{block2, type="bs-callout bs-callout-warning"}
+[prcomp() vs. princomp()]{.callout-warning-head}
+
+There is another function, `princomp()`, in `stats` that performs PCA. This function is based on spectral decomposition[^spectral] while `prcomp()` is based on SVD[^pca_svd]. SVD has greater numeric accuracy, so `prcomp()` is preferred.
+```
+
+### Covariance to Correlation
 
 Sometimes there is no raw data but only covariance or correlation matrix, and you may want to convert one to another. This can be done by using simple matrix multiplication, based on the fact that
 
@@ -204,3 +213,7 @@ prcomp(iris[1:60, 1:3])[["x"]][,1] %>%
 
 <!-- FootNotes -->
 [^scree]: Check [`multivariate_fc.R`](https://github.com/liao961120/local_depend/blob/master/R%20functions/multivariate_fc.R){target="_blank"}, starting at line 46.
+
+[^pca_svd]: You can check the answers at [Stack Overflow](https://stats.stackexchange.com/questions/20101/what-is-the-difference-between-r-functions-prcomp-and-princomp){target="_blank"}
+
+[^spectral]: The Conceptual workflow of PCA at Section [2.1.1](#conceptual) is based on spectral decomposition.
