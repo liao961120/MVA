@@ -10,7 +10,7 @@ library(DiagrammeR)
 grViz("
 digraph { //non-directed graph
       graph [layout = dot]  //layout = dot|neato|twopi|circo|fdp
-      rankdir=LR    // TB|RL|LR, LR: Left to Right orientation
+      rankdir=TB    // TB|RL|LR, LR: Left to Right orientation
 
       node [shape = box,
       style = filled,  margin=0.3]
@@ -40,7 +40,7 @@ digraph { //non-directed graph
 grViz("
 digraph { //non-directed graph
       graph [layout = dot]  //layout = dot|neato|twopi|circo|fdp
-      rankdir=LR    // TB|RL|LR, LR: Left to Right orientation
+      rankdir=TB    // TB|RL|LR, LR: Left to Right orientation
 
       node [shape = box,
       style = filled,  margin=0.18]
