@@ -1,0 +1,29 @@
+
+
+## Functions of Factor Analysis
+
+
+
+### `factanal`
+
+Performs FA with **correlation matrix**
+
+- estimation method: MLE
+- ​
+
+
+
+### `psych::fa`
+
+Performs FA with **correlation & covariance matrix**
+
+- estimation method: MLE, Principle Factor method
+
+fa(cov(bulls), nfactors=3, rotate="varimax", covar = F, fm="mle", scores="regression")
+
+### ~~`robustfa::FaClassic`~~: shit
+
+- Estimation method: MLE, Principle Factor method, Principle component method
+
+FaClassic(x = as.data.frame(bulls), factors = 3, method = "mle", scoresMethod = "regression", cor=F)
+

@@ -1,0 +1,329 @@
+# Factor Analysis {#FA}
+
+```{r message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
+library(dplyr)
+library(knitr)
+```
+
+
+Factor analysis is a technique that represents the variables of a dataset $X_1, X_2, \cdots, X_p$ (or $\mathbf{X}_{p \times 1}$) as linearly related to some fewer unobservable variables called factors, denoted $F_1, F_2, \cdots, F_m$ (or $\mathbf{F}_{m \times 1}$). The factors are representative of **latent variables** underlying the original variables, which is hypothetical as they cannot be measured or observed.
+
+
+```{block, type="alert alert-success"}
+**Notations**:
+
+- Capital Letter: Random Variable
+- Lower case Letter: Observation of a random variable
+- Bold: Vector or Matrix
+- Normal: Single Value
+```
+
+The Concept of Factor Analysis
+----------------------
+
+The **Orthogonal Factor Model** posits that each variable, $X_i$ is a combination of the underlying latent variables, $F_1, F_2, \cdots, F_m$. For the variables in any of the observation vectors in a sample, the model is defined as:
+
+$$
+X_1 - \mu_1 = \ell_{11} F_1 + \ell_{12} F_2 + \cdots + \ell_{1m} F_m + \varepsilon_1 \\
+X_2 - \mu_2 = \ell_{21} F_1 + \ell_{22} F_2 + \cdots + \ell_{2m} F_m + \varepsilon_2 \\
+\vdots \\
+X_p - \mu_p = \ell_{p1} F_1 + \ell_{p2} F_2 + \cdots + \ell_{pm} F_m + \varepsilon_p
+(\#eq:model)
+$$
+
+, or
+
+$$
+\mathbf{X}_{p \times 1} - \mathbf{\mu}_{p \times 1} = \mathbf{L}_{p \times m} \mathbf{F}_{m \times 1} + \mathbf{\varepsilon}_{p \times 1}
+(\#eq:model_vec)
+$$
+
+Where $\mathbf{\mu}$ is the mean vector and $\mathbf{\varepsilon}$ is a random error term to show the relationship between the factors is not exact. 
+There are several assumptions that must be made regarding the relationships of the factor model described above.
+
+1. **Factors are independent** of each other.
+    - $E(F_j) = 0$, $var(F_j) = 1$ 
+    - $Cov(F_j, F_k) = 0$ where $j \neq k$
+
+2. The error terms $\varepsilon_i$ are **independent** of each other.
+    - $E(\varepsilon) = 0$, $var(\varepsilon_i) = \psi_i$
+    - $Cov(\varepsilon_i, \varepsilon_j) = 0$.
+
+3. $\varepsilon_i$ and $F_j$ are **independent**: $Cov(\varepsilon_i, F_j) = 0$.
+
+Note the assumption $Cov(\varepsilon_i, \varepsilon_j) = 0$ implies the
+**factors represent all correlations** among the variables  $X_i$'s.
+
+
+### Factoring the Covariance Matrix
+
+With the assumptions above,
+
+$$
+\mathbf{\Sigma}_{p \times p} = Cov(\mathbf{X}_{p \times p}) = \mathbf{L L^T}_{p \times p} + \mathbf{\Psi}_{p \times p}
+(\#eq:covmt)
+$$
+, where $ ~ \mathbf{L}_{p \times m} = 
+\begin{pmatrix} 
+\ell_{11} & \ell_{12} & \cdots & \ell_{1m} \\
+\vdots    & \vdots    & \ddots & \vdots    \\
+\ell_{p1} & \ell_{p2} & \cdots & \ell_{pm}
+\end{pmatrix}, ~
+\mathbf{\Psi}_{p \times p} = 
+\begin{pmatrix}
+\psi_{1} &        & 0\\
+         & \ddots & \\
+0        &        & \psi_{p}
+\end{pmatrix}$
+  
+<br><br>
+
+- $Var(X_i) = \sigma_{ii} = \ell^2_{i1} + \ell^2_{i2} + \cdots + \ell^2_{im} + \psi_i$
+
+- $Cov(X_i, X_j) = \sigma_{ij} = \ell_{i1}\ell_{j1} + \ell_{i2}\ell_{j2} + \cdots + \ell_{im}\ell_{jm}$
+
+- $Cov(\mathbf{X}, \mathbf{F}) = \mathbf{L}$, i.e. $\ell_{ij} = Cov(X_i, F_j)$
+
+We therefore have a **partitioning of the variance** of the observation vector $X_i$ into a component due to the common factors $h_i^2$ and a component due to  **specific variance**:
+
+$$
+\begin{align}
+Var(X_i) &= (\ell^2_{i1} + \ell^2_{i2} + \cdots + \ell^2_{im}) + \psi_i \\
+&= h^2_i + \psi_i
+\end{align}
+(\#eq:varx)
+$$
+
+
+Estimation of Factor Loadings and Communalities with the Principal Component Method
+----------------------------------------------
+
+There are several methods for estimating the factor loadings and
+communalities, including the **principal component method**, **principal factor method**, the **iterated principal factor method** and **maximum likelihood method**.
+
+The approach of the principal component method is to calculate the **sample covariance matrix** $\mathbf{S}$ from a sample of data and then find an estimator, denoted $\hat{\ell}$ that can be used to factor $\mathbf{S}$.
+
+By **orthogonal diagonalizing** $\mathbf{S}$:
+
+$$
+\mathbf{S} = PDP^T \ ,
+(\#eq:diagonalize)
+$$
+
+,where $\ D =
+\begin{pmatrix}
+\lambda_1 & & \\
+& \ddots & \\
+& & \lambda_p
+\end{pmatrix}_{p \times p} \ ,
+P =
+\begin{bmatrix}
+e_1 \ \vdots & \cdots & \vdots \ e_p 
+\end{bmatrix}_{p \times p}$.
+
+<br>
+
+$D$ is a **diagonal matrix** with the diagonal entries, $\lambda_1 > \lambda_2 > \cdots > \lambda_p$ equaling the eigenvalues of $\mathbf{S}$.  
+$P$ is an **orthogonal matrix** with columns of eigenvectors of $\mathbf{S}$ corresponding to $D$.
+
+By factoring the diagonal matrix $D$ into (since all $\lambda_i \geq 0$):
+
+$$D = D^{1/2} ~ D^{1/2}$$
+
+$$
+\begin{align}
+\mathbf{S} &= PDP^T = (P D^{1/2})(D^{1/2} P^T) \\
+&= (PD^{1/2})(PD^{1/2})^T \\
+&= \mathbf{LL^T} 
+\end{align}
+(\#eq:pcfactor)
+$$
+  
+Since we are interested in finding $m$($<p$) factors in the data, we want to find $\mathbf{L}_{p \times m}$.  
+By dropping the last $(p-m)$ terms in $D$[^drop], the loading matrix then becomes $\mathbf{L}_{p \times m} = P_{p \times m} ~ D_{m \times m}$. And,  
+
+$$
+\mathbf{S} \approx \mathbf{L}_{p \times m} \mathbf{L}^T_{m \times p} + \mathbf{\Psi}_{p \times p} \\
+(\#eq:pcS)
+$$
+
+, where $\mathbf{\Psi} = diag(\mathbf{S} - \mathbf{LL}^T) = 
+\begin{pmatrix}
+s_{11} - h_1^2 & & 0 \\
+& \ddots & \\
+0 & & s_{pp} - h_p^2
+\end{pmatrix}$
+
+
+The number $m$ could be determined by a scree plot.
+
+
+[^drop]: It's reasonable since the last few $\lambda_i$'s have  small values, hence dropping them doesn't largely affects the total variance of $\mathbf{S}$. 
+
+
+
+Principal Component Method of Factor Analysis in R
+--------------------------------------------------
+
+The following example demonstrates factor analysis using the **covariance matrix** with the `iris` data set in R. 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+head(iris) %>%
+    kable(format = "markdown", align = "c")
+```
+
+### $\lambda_i$ & $e_i$ of $\mathbf{S}$
+
+Find the covariance matrix $\mathbf{S}$ with the `cov()` function.
+
+```{r}
+S <- cov(iris[,-5])
+round(S, 3)
+```
+
+The eigenvalues and eigenvectors are then computed from the covariance matrix with the `eigen()` function.
+
+```{r}
+S.eigen <- eigen(S)
+S.eigen
+```
+
+### Construction of $\hat{\mathbf{L}}$
+
+Before proceeding with factoring $\mathbf{S}$ into $PDP^T$, the number of factors $m$ must be selected. The last two eigenvalues of $\mathbf{S}$ are practically
+$0$, so $m = 2$ is likely a good choice. 
+
+
+With $m = 2$ factors, construct the $P$ and $D$ matrices from the covariance matrix with the largest two eigenvalues and the corresponding eigenvectors.
+
+```{r}
+P <- S.eigen$vectors[,1:2] %>% as.matrix()
+
+D <- diag(S.eigen$values[1:2], 
+          nrow = dim(P)[2],
+          ncol = dim(P)[2])
+```
+
+$\hat{\mathbf{L}}$ is then found from the $P$ and $D$ matrices as in $\hat{\mathbf{L}} = PD^{1/2}$
+
+```{r}
+S.loadings <- P %*% sqrt(D)
+round(S.loadings, 3)
+```
+
+Which are the **unrotated factor loadings**. We can see where the term **principal component method** is derived from as the columns of $\hat{\mathbf{L}}$ are proportional to the eigenvectors of $\mathbf{S}$, which are also equal to the corresponding coefficient of the principal components.
+
+```{r}
+# Perform PCA and take the resulting first two PCs
+prcomp(iris[,-5])$rotation[,1:2]%>% 
+    round(3)
+```
+
+```{r}
+# eigenvector of S from iris
+S.eigen$vectors[,1:2] %>% 
+    round(3)
+```
+
+### Variances: Communalities, & Specific Variances
+
+The **communality** $h^2_i$, as noted previously is the sum of squares of the **row** of $\hat{\mathbf{L}}$.
+
+$$ \hat{h}^2_i = \sum^m_{j=1} \hat{\ell}^2_{ij} $$
+
+```{r}
+S.h2 <- S.loadings^2 %>% rowSums()
+round(S.h2, 3)
+```
+
+The sum of squares of the columns of $\hat{\mathbf{L}}$ are the respective eigenvalues of $\mathbf{S}$,
+since $\sqrt{\hat{\lambda_i}} \hat{e_i} = 
+\begin{pmatrix}
+\ell_{i1} \\
+\ell_{i2} \\
+\vdots \\
+\ell_{ip} \\
+\end{pmatrix}_{p \times 1}$,
+$(\sqrt{\hat{\lambda_i}} \hat{e_i})^T (\sqrt{\hat{\lambda_i}} \hat{e_i}) = \hat{\lambda_i}$
+
+```{r}
+colSums(S.loadings^2) %>% round(3)
+```
+
+```{r}
+S.eigen$values[1:2] %>% round(3)
+```
+
+#### Specific variance $\psi_i$
+
+The specific variance, $\psi_i$, is a component unique to the particular variable and is found by subtracting the diagonal of $\mathbf{S}$ by the respective communality $\hat{h}^2_i$:
+
+$$ \psi_i = s_{ii} - \hat{h}^2_i $$
+
+```{r}
+diag(S) - S.h2 %>% 
+    round(4)
+```
+
+#### Proportion of variance due to Factors
+
+The proportions of **total variance** of $\mathbf{S}$ due to **common factor** 1 and 2, respectively, are found by dividing the sum of squares of the columns of $\hat{\mathbf{L}}$ by $tr(\mathbf{S}) = \Sigma s_{ii} = \Sigma \lambda_i$.
+
+```{r}
+var_F1 <- colSums(S.loadings^2)[1]
+var_F2 <- colSums(S.loadings^2)[2]
+
+cbind(var_F1 / sum(S.eigen$values),
+      var_F2 / sum(S.eigen$values)) %>%
+    round(3)
+```
+
+
+
+Factor Analysis with the `psych` Package
+----------------------------------------
+
+The [psych package](https://cran.r-project.org/web/packages/psych/) has
+many functions available for performing factor analysis.
+
+``` {.r}
+library(psych)
+```
+
+The `principal()` function performs factor analysis with the principal
+component method as explained above. The rotation is set to `none` for
+now as we have not yet done any rotation of the factors. The `covar`
+argument is set to `TRUE` so the function factors the covariance matrix
+$\mathbf{S}$ of the data as we did above.
+
+```{r}
+library(psych)
+iris.FA.PC <- 
+    principal(iris[,-5], 
+              nfactors = 2, 
+              rotate = 'none', 
+              covar = TRUE)
+iris.FA.PC
+```
+
+The function's output matches our calculations. **H2** and **U2** are the ***communality** and **specific variance**, respectively, of the **standardized loadings** obtained from the **correlation matrix** $\mathbf{R}$. 
+
+```{r}
+iris.FA.PC[["communality"]]
+```
+
+
+```{r}
+iris.FA.PC[["loadings"]]
+```
+
+
+```{r}
+iris.FA.PC[["Vaccounted"]]
+```
+`Proportion Var` is the proportion of total variance due to the column of $\hat{\mathbf{L}}$, i.e the common factor.
+
+`Proportion Explained` is the variance due to one common factor devided by variance due to all common factors.
+
+
+
