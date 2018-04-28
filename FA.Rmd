@@ -95,7 +95,7 @@ Var(X_i) &= (\ell^2_{i1} + \ell^2_{i2} + \cdots + \ell^2_{im}) + \psi_i \\
 $$
 
 
-Estimation of Factor Loadings and Communalities with the Principal Component Method
+Principal Component Method: Estimation of Factor Loadings and Communalities
 ----------------------------------------------
 
 There are several methods for estimating the factor loadings and
