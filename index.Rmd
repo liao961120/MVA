@@ -39,7 +39,6 @@ Feel free to edit (by clicking <i class="fa fa-edit"></i> on the nav bar) if you
 
 R Notes for Multivariate Analysis by Yongfu, Liao is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.Based on a work at https://github.com/liao961120/MVA.github.io.
 
-This is inline $\frac{a}{b}$.
 
 
 
