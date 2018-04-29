@@ -181,7 +181,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="principle-component-method-explained-in-r" class="section level1">
 <h1><span class="header-section-number">A</span> Principle Component Method Explained (in R)</h1>
 <p>The following example demonstrates factor analysis using the <strong>covariance matrix</strong> with the <code>iris</code> data set in R. Instead of directly using <code>psych::priciple()</code>, a step-by-step approach is used.</p>
-<table class="table table-striped table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:center;">
@@ -306,17 +307,18 @@ setosa
 </tr>
 </tbody>
 </table>
+</div>
 <div id="lambda_i-e_i-of-mathbfs" class="section level2">
 <h2><span class="header-section-number">A.1</span> <span class="math inline">\(\lambda_i\)</span> &amp; <span class="math inline">\(e_i\)</span> of <span class="math inline">\(\mathbf{S}\)</span></h2>
 <p>Find the covariance matrix <span class="math inline">\(\mathbf{S}\)</span> with the <code>cov()</code> function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">S &lt;-<span class="st"> </span><span class="kw">cov</span>(iris[,<span class="op">-</span><span class="dv">5</span>])
 S  <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">kable</span>(<span class="dt">format=</span><span class="st">&quot;html&quot;</span>, <span class="dt">align=</span><span class="st">&quot;c&quot;</span>, <span class="dt">digits =</span> <span class="dv">3</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">kable_styling</span>(
-        <span class="dt">bootstrap_options =</span> 
-            <span class="kw">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;condensed&quot;</span>, <span class="st">&quot;responsive&quot;</span>)
-        )</code></pre></div>
-<table class="table table-striped table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<span class="st">    </span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> 
+                      <span class="kw">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;condensed&quot;</span>)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">scroll_box</span>(<span class="dt">width =</span> <span class="st">&quot;100%&quot;</span>)</code></pre></div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -406,6 +408,7 @@ Petal.Width
 </tr>
 </tbody>
 </table>
+</div>
 <p>The eigenvalues and eigenvectors are then computed from the covariance matrix with the <code>eigen()</code> function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">S.eigen &lt;-<span class="st"> </span><span class="kw">eigen</span>(S)
 S.eigen</code></pre></div>
