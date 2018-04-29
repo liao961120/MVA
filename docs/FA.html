@@ -179,9 +179,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
+\(
+\newcommand{\bm}[1]{\boldsymbol{\mathbf{#1}}}
+\)
+
+% for Rmarkdown HTML output %
 <div id="FA" class="section level1">
 <h1><span class="header-section-number">Chapter 3</span> Factor Analysis</h1>
-<p>Factor analysis is a technique that represents the variables of a dataset <span class="math inline">\(X_1, X_2, \cdots, X_p\)</span> (or <span class="math inline">\(\mathbf{X}_{p \times 1}\)</span>) as linearly related to some fewer unobservable variables called factors, denoted <span class="math inline">\(F_1, F_2, \cdots, F_m\)</span> (or <span class="math inline">\(\mathbf{F}_{m \times 1}\)</span>). The factors are representative of <strong>latent variables</strong> underlying the original variables, which is hypothetical as they cannot be measured or observed.</p>
+<p>Factor analysis is a technique that represents the variables of a dataset <span class="math inline">\(X_1, X_2, \cdots, X_p\)</span> (or <span class="math inline">\(\bm{X}_{p \times 1}\)</span>) as linearly related to some fewer unobservable variables called factors, denoted <span class="math inline">\(F_1, F_2, \cdots, F_m\)</span> (or <span class="math inline">\(\bm{F}_{m \times 1}\)</span>). The factors are representative of <strong>latent variables</strong> underlying the original variables, which is hypothetical as they cannot be measured or observed.</p>
 <div class="alert alert-success">
 <p>
 <strong>Notations</strong>:
@@ -205,18 +210,22 @@ Normal: Single Value
 <h2><span class="header-section-number">3.1</span> The Concept of Factor Analysis</h2>
 <p>The <strong>Orthogonal Factor Model</strong> posits that each variable, <span class="math inline">\(X_i\)</span> is a combination of the underlying latent variables, <span class="math inline">\(F_1, F_2, \cdots, F_m\)</span>. For the variables in any of the observation vectors in a sample, the model is defined as:</p>
 <p><span class="math display" id="eq:model">\[
+\begin{equation}
+\begin{split}
 X_1 - \mu_1 = \ell_{11} F_1 + \ell_{12} F_2 + \cdots + \ell_{1m} F_m + \varepsilon_1 \\
 X_2 - \mu_2 = \ell_{21} F_1 + \ell_{22} F_2 + \cdots + \ell_{2m} F_m + \varepsilon_2 \\
 \vdots \\
 X_p - \mu_p = \ell_{p1} F_1 + \ell_{p2} F_2 + \cdots + \ell_{pm} F_m + \varepsilon_p
+\end{split}
 \tag{3.1}
+\end{equation}
 \]</span></p>
 <p>, or</p>
-<p><span class="math display">\[
-\mathbf{X}_{p \times 1} - \mathbf{\mu}_{p \times 1} = \mathbf{L}_{p \times m} \mathbf{F}_{m \times 1} + \mathbf{\varepsilon}_{p \times 1}
-(\#eq:model_vec)
+<p><span class="math display" id="eq:model-vec">\[
+\bm{X}_{p \times 1} - \bm{\mu}_{p \times 1} = \bm{L}_{p \times m} \bm{F}_{m \times 1} + \bm{\varepsilon}_{p \times 1}
+\tag{3.2}
 \]</span></p>
-<p>, where <span class="math inline">\(\mathbf{\mu}\)</span> is the mean vector and <span class="math inline">\(\mathbf{\varepsilon}\)</span> is a random error term to show the relationship between the factors is not exact. There are several assumptions that must be made regarding the relationships of the factor model described above.</p>
+<p>, where <span class="math inline">\(\bm{\mu}\)</span> is the mean vector and <span class="math inline">\(\bm{\varepsilon}\)</span> is a random error term to show the relationship between the factors is not exact. There are several assumptions that must be made regarding the relationships of the factor model described above.</p>
 <ol style="list-style-type: decimal">
 <li><strong>Factors are independent</strong> of each other.
 <ul>
@@ -237,28 +246,28 @@ X_p - \mu_p = \ell_{p1} F_1 + \ell_{p2} F_2 + \cdots + \ell_{pm} F_m + \varepsil
 <p><span class="math display" id="eq:covmt">\[
 \begin{equation} 
 \begin{split}
-&amp; \mathbf{\Sigma}_{p \times p} = Cov(\mathbf{X}_{p \times p}) = \mathbf{L L^T}_{p \times p} + \mathbf{\Psi}_{p \times p} \\ \\
- , where ~~ &amp; \mathbf{L}_{p \times m} = 
+&amp; \bm{\Sigma}_{p \times p} = Cov(\bm{X}_{p \times p}) = \bm{L L^T}_{p \times p} + \bm{\Psi}_{p \times p} \\ \\
+ , where ~~ &amp; \bm{L}_{p \times m} = 
 \begin{pmatrix} 
 \ell_{11} &amp; \ell_{12} &amp; \cdots &amp; \ell_{1m} \\
 \vdots    &amp; \vdots    &amp; \ddots &amp; \vdots    \\
 \ell_{p1} &amp; \ell_{p2} &amp; \cdots &amp; \ell_{pm}
 \end{pmatrix}, \\
-&amp; \mathbf{\Psi}_{p \times p} = 
+&amp; \bm{\Psi}_{p \times p} = 
 \begin{pmatrix}
 \psi_{1} &amp;        &amp; 0\\
          &amp; \ddots &amp; \\
 0        &amp;        &amp; \psi_{p}
 \end{pmatrix}
 \end{split}
-\tag{3.2}
+\tag{3.3}
 \end{equation} 
 \]</span></p>
 <p><br><br></p>
 <ul>
 <li><p><span class="math inline">\(Var(X_i) = \sigma_{ii} = \ell^2_{i1} + \ell^2_{i2} + \cdots + \ell^2_{im} + \psi_i\)</span></p></li>
 <li><p><span class="math inline">\(Cov(X_i, X_j) = \sigma_{ij} = \ell_{i1}\ell_{j1} + \ell_{i2}\ell_{j2} + \cdots + \ell_{im}\ell_{jm}\)</span></p></li>
-<li><p><span class="math inline">\(Cov(\mathbf{X}, \mathbf{F}) = \mathbf{L}\)</span>, i.e. <span class="math inline">\(\ell_{ij} = Cov(X_i, F_j)\)</span></p></li>
+<li><p><span class="math inline">\(Cov(\bm{X}, \bm{F}) = \bm{L}\)</span>, i.e. <span class="math inline">\(\ell_{ij} = Cov(X_i, F_j)\)</span></p></li>
 </ul>
 <p>We therefore have a <strong>partitioning of the variance</strong> of the observation vector <span class="math inline">\(X_i\)</span> into a component due to the common factors <span class="math inline">\(h_i^2\)</span> and a component due to <strong>specific variance</strong>:</p>
 <p><span class="math display" id="eq:varx">\[
@@ -267,7 +276,7 @@ X_p - \mu_p = \ell_{p1} F_1 + \ell_{p2} F_2 + \cdots + \ell_{pm} F_m + \varepsil
 Var(X_i) &amp; = (\ell^2_{i1} + \ell^2_{i2} + \cdots + \ell^2_{im}) + \psi_i \\
 &amp; = h^2_i + \psi_i
 \end{split}
-\tag{3.3}
+\tag{3.4}
 \end{equation}
 \]</span></p>
 </div>
@@ -275,12 +284,12 @@ Var(X_i) &amp; = (\ell^2_{i1} + \ell^2_{i2} + \cdots + \ell^2_{im}) + \psi_i \\
 <div id="principal-component-method" class="section level2">
 <h2><span class="header-section-number">3.2</span> Principal Component Method</h2>
 <p>There are several methods for estimating the factor loadings and communalities, including the <strong>principal component method</strong>, <strong>principal factor method</strong>, the <strong>iterated principal factor method</strong> and <strong>maximum likelihood method</strong>.</p>
-<p>The approach of the principal component method is to calculate the <strong>sample covariance matrix</strong> <span class="math inline">\(\mathbf{S}\)</span> from a sample of data and then find an estimator, denoted <span class="math inline">\(\hat{\ell}\)</span> that can be used to factor <span class="math inline">\(\mathbf{S}\)</span>.</p>
-<p>By <strong>orthogonal diagonalizing</strong> <span class="math inline">\(\mathbf{S}\)</span>:</p>
+<p>The approach of the principal component method is to calculate the <strong>sample covariance matrix</strong> <span class="math inline">\(\bm{S}\)</span> from a sample of data and then find an estimator, denoted <span class="math inline">\(\hat{\ell}\)</span> that can be used to factor <span class="math inline">\(\bm{S}\)</span>.</p>
+<p>By <strong>orthogonal diagonalizing</strong> <span class="math inline">\(\bm{S}\)</span>:</p>
 <p><span class="math display" id="eq:diagonalize">\[
 \begin{equation} 
 \begin{split}
-&amp;\mathbf{S} = PDP^T  \\ \\
+&amp;\bm{S} = PDP^T  \\ \\
 , ~ where \ &amp; D =
 \begin{pmatrix}
 \lambda_1 &amp; &amp; \\
@@ -292,37 +301,37 @@ Var(X_i) &amp; = (\ell^2_{i1} + \ell^2_{i2} + \cdots + \ell^2_{im}) + \psi_i \\
 e_1 \ \vdots &amp; \cdots &amp; \vdots \ e_p 
 \end{bmatrix}_{p \times p}
 \end{split}
-\tag{3.4}
+\tag{3.5}
 \end{equation} 
 \]</span></p>
 <p><br></p>
-<p><span class="math inline">\(D\)</span> is a <strong>diagonal matrix</strong> with the diagonal entries, <span class="math inline">\(\lambda_1 &gt; \lambda_2 &gt; \cdots &gt; \lambda_p\)</span> equaling the eigenvalues of <span class="math inline">\(\mathbf{S}\)</span>.<br />
-<span class="math inline">\(P\)</span> is an <strong>orthogonal matrix</strong> with columns of eigenvectors of <span class="math inline">\(\mathbf{S}\)</span> corresponding to <span class="math inline">\(D\)</span>.</p>
+<p><span class="math inline">\(D\)</span> is a <strong>diagonal matrix</strong> with the diagonal entries, <span class="math inline">\(\lambda_1 &gt; \lambda_2 &gt; \cdots &gt; \lambda_p\)</span> equaling the eigenvalues of <span class="math inline">\(\bm{S}\)</span>.<br />
+<span class="math inline">\(P\)</span> is an <strong>orthogonal matrix</strong> with columns of eigenvectors of <span class="math inline">\(\bm{S}\)</span> corresponding to <span class="math inline">\(D\)</span>.</p>
 <p>By factoring the diagonal matrix <span class="math inline">\(D\)</span>, <span class="math inline">\(~D = D^{1/2} ~ D^{1/2}\)</span>, since all <span class="math inline">\(\lambda_i \geq 0\)</span>:</p>
 <p><span class="math display" id="eq:pcfactor">\[
 \begin{equation} 
 \begin{split}
-\mathbf{S} &amp;= PDP^T = (P D^{1/2})(D^{1/2} P^T) \\
+\bm{S} &amp;= PDP^T = (P D^{1/2})(D^{1/2} P^T) \\
 &amp; = (PD^{1/2})(PD^{1/2})^T \\
-&amp; = \mathbf{LL^T} 
+&amp; = \bm{LL^T} 
 \end{split}
-\tag{3.5}
+\tag{3.6}
 \end{equation} 
 \]</span></p>
-<p>Since we are interested in finding <span class="math inline">\(m\)</span>(<span class="math inline">\(&lt;p\)</span>) factors in the data, we want to find <span class="math inline">\(\mathbf{L}_{p \times m}\)</span>.<br />
-By dropping the last <span class="math inline">\((p-m)\)</span> terms in <span class="math inline">\(D\)</span><a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a>, the loading matrix then becomes <span class="math inline">\(\mathbf{L}_{p \times m} = P_{p \times m} ~ D_{m \times m}\)</span>. And,</p>
+<p>Since we are interested in finding <span class="math inline">\(m\)</span>(<span class="math inline">\(&lt;p\)</span>) factors in the data, we want to find <span class="math inline">\(\bm{L}_{p \times m}\)</span>.<br />
+By dropping the last <span class="math inline">\((p-m)\)</span> terms in <span class="math inline">\(D\)</span><a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a>, the loading matrix then becomes <span class="math inline">\(\bm{L}_{p \times m} = P_{p \times m} ~ D_{m \times m}\)</span>. And,</p>
 <p><span class="math display" id="eq:est-S-with-PC">\[
 \begin{equation} 
 \begin{split}
-&amp; \mathbf{S} \approx \mathbf{L}_{p \times m} \mathbf{L}^T_{m \times p} + \mathbf{\Psi}_{p \times p} \\ \\
-, where ~~ &amp; \mathbf{\Psi} = diag(\mathbf{S} - \mathbf{LL}^T) \\ 
+&amp; \bm{S} \approx \bm{L}_{p \times m} \bm{L}^T_{m \times p} + \bm{\Psi}_{p \times p} \\ \\
+, where ~~ &amp; \bm{\Psi} = diag(\bm{S} - \bm{LL}^T) \\ 
 &amp; ~~~ = \begin{pmatrix}
 s_{11} - h_1^2 &amp; &amp; 0 \\
 &amp; \ddots &amp; \\
 0 &amp; &amp; s_{pp} - h_p^2
 \end{pmatrix}
 \end{split}
-\tag{3.6}
+\tag{3.7}
 \end{equation} 
 \]</span></p>
 <p>The number <span class="math inline">\(m\)</span> could be determined by a scree plot.</p>
@@ -331,7 +340,7 @@ s_{11} - h_1^2 &amp; &amp; 0 \\
 <h2><span class="header-section-number">3.3</span> Factor Analysis with the <code>psych</code> Package</h2>
 <p>The <a href="https://cran.r-project.org/web/packages/psych/">psych package</a> has many functions available for performing factor analysis.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(psych)</code></pre></div>
-<p>The <code>principal()</code> function performs factor analysis with the principal component method as explained above. The rotation is set to <code>none</code> for now as we have not yet done any rotation of the factors. The <code>covar</code> argument is set to <code>TRUE</code> so the function factors the covariance matrix <span class="math inline">\(\mathbf{S}\)</span> of the data as we did above.</p>
+<p>The <code>principal()</code> function performs factor analysis with the principal component method as explained above. The rotation is set to <code>none</code> for now as we have not yet done any rotation of the factors. The <code>covar</code> argument is set to <code>TRUE</code> so the function factors the covariance matrix <span class="math inline">\(\bm{S}\)</span> of the data as we did above.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(psych)
 iris.FA.PC &lt;-<span class="st"> </span>
 <span class="st">    </span><span class="kw">principal</span>(iris[,<span class="op">-</span><span class="dv">5</span>], 
@@ -375,7 +384,7 @@ The root mean square of the residuals (RMSR) is  0.02
  with the empirical chi square  0.53  with prob &lt;  NA 
 
 Fit based upon off diagonal values = 1</code></pre>
-<p>The function’s output matches our calculations. <strong>H2</strong> and <strong>U2</strong> are the *<strong>communality</strong> and <strong>specific variance</strong>, respectively, of the <strong>standardized loadings</strong> obtained from the <strong>correlation matrix</strong> <span class="math inline">\(\mathbf{R}\)</span>.</p>
+<p>The function’s output matches our calculations. <strong>H2</strong> and <strong>U2</strong> are the *<strong>communality</strong> and <strong>specific variance</strong>, respectively, of the <strong>standardized loadings</strong> obtained from the <strong>correlation matrix</strong> <span class="math inline">\(\bm{R}\)</span>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris.FA.PC[[<span class="st">&quot;communality&quot;</span>]]</code></pre></div>
 <pre><code>Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
    0.6568270    0.1595832    3.1103354    0.5441668 </code></pre>
@@ -399,7 +408,7 @@ Proportion Var        0.9246187 0.05306648
 Cumulative Var        0.9246187 0.97768521
 Proportion Explained  0.9457223 0.05427768
 Cumulative Proportion 0.9457223 1.00000000</code></pre>
-<p><code>Proportion Var</code> is the proportion of total variance due to the column of <span class="math inline">\(\hat{\mathbf{L}}\)</span>, i.e the common factor.</p>
+<p><code>Proportion Var</code> is the proportion of total variance due to the column of <span class="math inline">\(\hat{\bm{L}}\)</span>, i.e the common factor.</p>
 <p><code>Proportion Explained</code> is the variance due to one common factor devided by variance due to all common factors.</p>
 
 </div>
@@ -411,7 +420,7 @@ Cumulative Proportion 0.9457223 1.00000000</code></pre>
 <div class="footnotes">
 <hr />
 <ol start="4">
-<li id="fn4"><p>It’s reasonable since the last few <span class="math inline">\(\lambda_i\)</span>’s have small values, hence dropping them doesn’t largely affects the total variance of <span class="math inline">\(\mathbf{S}\)</span>.<a href="FA.html#fnref4">↩</a></p></li>
+<li id="fn4"><p>It’s reasonable since the last few <span class="math inline">\(\lambda_i\)</span>’s have small values, hence dropping them doesn’t largely affects the total variance of <span class="math inline">\(\bm{S}\)</span>.<a href="FA.html#fnref4">↩</a></p></li>
 </ol>
 </div>
             </section>
