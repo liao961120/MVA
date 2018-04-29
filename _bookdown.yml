@@ -5,6 +5,6 @@ language:
   ui:
     chapter_name: "Chapter "
 rmd_files:
-  html: ["index.Rmd", "Multivar_distr.Rmd", "PCA.Rmd", "FA.Rmd", "references.Rmd"]
+  html: ["index.Rmd", "Multivar_distr.Rmd", "PCA.Rmd", "FA.Rmd", "appendix.Rmd", "ap_FA_PCmethod.Rmd", "references.Rmd"]
   latex: ["index_pdf.Rmd", "Multivar_distr.Rmd", "PCA.Rmd", "references.Rmd"]
 output_dir: "docs"

@@ -1,0 +1,129 @@
+# Principle Component Method Explained (in R)
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+library(dplyr)
+library(knitr)
+library(kableExtra)
+```
+
+The following example demonstrates factor analysis using the **covariance matrix** with the `iris` data set in R. Instead of directly using `psych::priciple()`, a step-by-step approach is used.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+head(iris) %>% 
+    kable(format="html", align="c") %>%
+    kable_styling(
+        bootstrap_options = 
+            c("striped", "condensed", "responsive")
+        )
+```
+
+## $\lambda_i$ & $e_i$ of $\mathbf{S}$
+
+Find the covariance matrix $\mathbf{S}$ with the `cov()` function.
+
+```{r message=FALSE, warning=FALSE}
+S <- cov(iris[,-5])
+S  %>% 
+    kable(format="html", align="c", digits = 3) %>%
+    kable_styling(
+        bootstrap_options = 
+            c("striped", "condensed", "responsive")
+        )
+```
+
+The eigenvalues and eigenvectors are then computed from the covariance matrix with the `eigen()` function.
+
+```{r}
+S.eigen <- eigen(S)
+S.eigen
+```
+
+## Construction of $\hat{\mathbf{L}}$
+
+Before proceeding with factoring $\mathbf{S}$ into $PDP^T$, the number of factors $m$ must be selected. The last two eigenvalues of $\mathbf{S}$ are practically
+$0$, so $m = 2$ is likely a good choice. 
+
+
+With $m = 2$ factors, construct the $P$ and $D$ matrices from the covariance matrix with the largest two eigenvalues and the corresponding eigenvectors.
+
+```{r}
+P <- S.eigen$vectors[,1:2] %>% as.matrix()
+
+D <- diag(S.eigen$values[1:2], 
+          nrow = dim(P)[2],
+          ncol = dim(P)[2])
+```
+
+$\hat{\mathbf{L}}$ is then found from the $P$ and $D$ matrices as in $\hat{\mathbf{L}} = PD^{1/2}$
+
+```{r}
+S.loadings <- P %*% sqrt(D)
+S.loadings %>% round(3)
+```
+
+Which are the **unrotated factor loadings**. We can see where the term **principal component method** is derived from as the columns of $\hat{\mathbf{L}}$ are proportional to the eigenvectors of $\mathbf{S}$, which are also equal to the corresponding coefficient of the principal components.
+
+```{r}
+# Perform PCA and take the resulting first two PCs
+prcomp(iris[,-5])$rotation[,1:2] %>% 
+    round(3)
+```
+
+```{r}
+# eigenvector of S from iris
+S.eigen$vectors[,1:2] %>% 
+    round(3)
+```
+
+## Variances: Communalities, & Specific Variances
+
+The **communality** $h^2_i$, as noted previously is the sum of squares of the **row** of $\hat{\mathbf{L}}$.
+
+$$ \hat{h}^2_i = \sum^m_{j=1} \hat{\ell}^2_{ij} $$
+
+```{r}
+S.h2 <- S.loadings^2 %>% rowSums()
+S.h2 %>% round(3)
+```
+
+The sum of squares of the columns of $\hat{\mathbf{L}}$ are the respective eigenvalues of $\mathbf{S}$,
+since $\sqrt{\hat{\lambda_i}} \hat{e_i} = 
+\begin{pmatrix}
+\ell_{i1} \\
+\ell_{i2} \\
+\vdots \\
+\ell_{ip} \\
+\end{pmatrix}_{p \times 1}$,
+$(\sqrt{\hat{\lambda_i}} \hat{e_i})^T (\sqrt{\hat{\lambda_i}} \hat{e_i}) = \hat{\lambda_i}$
+
+```{r}
+colSums(S.loadings^2) %>% round(3)
+```
+
+```{r}
+S.eigen$values[1:2] %>% round(3)
+```
+
+### Specific variance $\psi_i$
+
+The specific variance, $\psi_i$, is a component unique to the particular variable and is found by subtracting the diagonal of $\mathbf{S}$ by the respective communality $\hat{h}^2_i$:
+
+$$ \psi_i = s_{ii} - \hat{h}^2_i $$
+
+```{r}
+diag(S) - S.h2 %>% 
+    round(4)
+```
+
+### Proportion of variance due to Factors
+
+The proportions of **total variance** of $\mathbf{S}$ due to **common factor** 1 and 2, respectively, are found by dividing the sum of squares of the columns of $\hat{\mathbf{L}}$ by $tr(\mathbf{S}) = \Sigma s_{ii} = \Sigma \lambda_i$.
+
+```{r}
+var_F1 <- colSums(S.loadings^2)[1]
+var_F2 <- colSums(S.loadings^2)[2]
+
+cbind(var_F1 / sum(S.eigen$values),
+      var_F2 / sum(S.eigen$values)) %>%
+    round(3)
+```

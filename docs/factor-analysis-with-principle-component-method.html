@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>R Notes for Multivariate Analysis</title>
+  <meta name="description" content="This is a note for multivariate analysis in R.">
+  <meta name="generator" content="bookdown 0.6 and GitBook 2.6.7">
+
+  <meta property="og:title" content="R Notes for Multivariate Analysis" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a note for multivariate analysis in R." />
+  <meta name="github-repo" content="liao961120/MVA.github.io" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="R Notes for Multivariate Analysis" />
+  
+  <meta name="twitter:description" content="This is a note for multivariate analysis in R." />
+  
+
+<meta name="author" content="Yongfu, Liao">
+
+
+<meta name="date" content="2018-04-29">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="icon-152x152.png">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="prev" href="FA.html">
+<link rel="next" href="references.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.0/htmlwidgets.js"></script>
+<script src="libs/viz-0.3/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-0.9.2/grViz.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./index.html">R Notes for Multivariate Analysis</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i>License</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="mvnorm.html"><a href="mvnorm.html"><i class="fa fa-check"></i><b>1</b> Multivariate Normal Distribution &amp; Covariance Matrix</a><ul>
+<li class="chapter" data-level="1.1" data-path="mvnorm.html"><a href="mvnorm.html#bivariate-normal-contour-map"><i class="fa fa-check"></i><b>1.1</b> Bivariate Normal Contour Map</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="mvnorm.html"><a href="mvnorm.html#ellipse"><i class="fa fa-check"></i><b>1.1.1</b> <code>ellipse()</code></a></li>
+<li class="chapter" data-level="1.1.2" data-path="mvnorm.html"><a href="mvnorm.html#data-generation"><i class="fa fa-check"></i><b>1.1.2</b> Data Generation</a></li>
+<li class="chapter" data-level="1.1.3" data-path="mvnorm.html"><a href="mvnorm.html#plotting"><i class="fa fa-check"></i><b>1.1.3</b> Plotting</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="mvnorm.html"><a href="mvnorm.html#multivariate-normal-functions"><i class="fa fa-check"></i><b>1.2</b> Multivariate Normal Functions</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="mvnorm.html"><a href="mvnorm.html#generate-density-fx"><i class="fa fa-check"></i><b>1.2.1</b> Generate density f(x)</a></li>
+<li class="chapter" data-level="1.2.2" data-path="mvnorm.html"><a href="mvnorm.html#covariance-matrix"><i class="fa fa-check"></i><b>1.2.2</b> Covariance Matrix</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="PCA.html"><a href="PCA.html"><i class="fa fa-check"></i><b>2</b> Principle Component Analysis</a><ul>
+<li class="chapter" data-level="2.1" data-path="PCA.html"><a href="PCA.html#workflow-of-pca"><i class="fa fa-check"></i><b>2.1</b> Workflow of PCA</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="PCA.html"><a href="PCA.html#conceptual"><i class="fa fa-check"></i><b>2.1.1</b> Conceptual</a></li>
+<li class="chapter" data-level="2.1.2" data-path="PCA.html"><a href="PCA.html#computational-with-r"><i class="fa fa-check"></i><b>2.1.2</b> Computational (with R)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="PCA.html"><a href="PCA.html#conversion-between-correlation-covaraince-matrices"><i class="fa fa-check"></i><b>2.2</b> Conversion Between Correlation &amp; Covaraince Matrices</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="PCA.html"><a href="PCA.html#prcomp"><i class="fa fa-check"></i><b>2.2.1</b> <code>prcomp()</code></a></li>
+<li class="chapter" data-level="2.2.2" data-path="PCA.html"><a href="PCA.html#covariance-to-correlation"><i class="fa fa-check"></i><b>2.2.2</b> Covariance to Correlation</a></li>
+<li class="chapter" data-level="2.2.3" data-path="PCA.html"><a href="PCA.html#eigen"><i class="fa fa-check"></i><b>2.2.3</b> <code>eigen()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="PCA.html"><a href="PCA.html#scree-plot"><i class="fa fa-check"></i><b>2.3</b> Scree Plot</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="PCA.html"><a href="PCA.html#screeplot-from-base-r"><i class="fa fa-check"></i><b>2.3.1</b> <code>screeplot()</code> from Base R</a></li>
+<li class="chapter" data-level="2.3.2" data-path="PCA.html"><a href="PCA.html#fviz_eig-from-factoextra"><i class="fa fa-check"></i><b>2.3.2</b> <code>fviz_eig()</code> from <code>factoextra</code></a></li>
+<li class="chapter" data-level="2.3.3" data-path="PCA.html"><a href="PCA.html#customized-function"><i class="fa fa-check"></i><b>2.3.3</b> Customized Function</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="PCA.html"><a href="PCA.html#q-q-plot"><i class="fa fa-check"></i><b>2.4</b> Q-Q Plot</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="PCA.html"><a href="PCA.html#qqnorm-from-base-r"><i class="fa fa-check"></i><b>2.4.1</b> <code>qqnorm()</code> from Base R</a></li>
+<li class="chapter" data-level="2.4.2" data-path="PCA.html"><a href="PCA.html#self-defined-function"><i class="fa fa-check"></i><b>2.4.2</b> Self-defined Function</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="FA.html"><a href="FA.html"><i class="fa fa-check"></i><b>3</b> Factor Analysis</a><ul>
+<li class="chapter" data-level="3.1" data-path="FA.html"><a href="FA.html#the-concept-of-factor-analysis"><i class="fa fa-check"></i><b>3.1</b> The Concept of Factor Analysis</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="FA.html"><a href="FA.html#factoring-the-covariance-matrix"><i class="fa fa-check"></i><b>3.1.1</b> Factoring the Covariance Matrix</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="FA.html"><a href="FA.html#principal-component-method-estimation-of-factor-loadings-and-communalities"><i class="fa fa-check"></i><b>3.2</b> Principal Component Method: Estimation of Factor Loadings and Communalities</a></li>
+<li class="chapter" data-level="3.3" data-path="FA.html"><a href="FA.html#factor-analysis-with-the-psych-package"><i class="fa fa-check"></i><b>3.3</b> Factor Analysis with the <code>psych</code> Package</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="factor-analysis-with-principle-component-method.html"><a href="factor-analysis-with-principle-component-method.html"><i class="fa fa-check"></i><b>A</b> Factor Analysis with Principle Component Method</a><ul>
+<li class="chapter" data-level="A.1" data-path="factor-analysis-with-principle-component-method.html"><a href="factor-analysis-with-principle-component-method.html#principal-component-method-of-factor-analysis-in-r"><i class="fa fa-check"></i><b>A.1</b> Principal Component Method of Factor Analysis in R</a><ul>
+<li class="chapter" data-level="A.1.1" data-path="factor-analysis-with-principle-component-method.html"><a href="factor-analysis-with-principle-component-method.html#lambda_i-e_i-of-mathbfs"><i class="fa fa-check"></i><b>A.1.1</b> <span class="math inline">\(\lambda_i\)</span> &amp; <span class="math inline">\(e_i\)</span> of <span class="math inline">\(\mathbf{S}\)</span></a></li>
+<li class="chapter" data-level="A.1.2" data-path="factor-analysis-with-principle-component-method.html"><a href="factor-analysis-with-principle-component-method.html#construction-of-hatmathbfl"><i class="fa fa-check"></i><b>A.1.2</b> Construction of <span class="math inline">\(\hat{\mathbf{L}}\)</span></a></li>
+<li class="chapter" data-level="A.1.3" data-path="factor-analysis-with-principle-component-method.html"><a href="factor-analysis-with-principle-component-method.html#variances-communalities-specific-variances"><i class="fa fa-check"></i><b>A.1.3</b> Variances: Communalities, &amp; Specific Variances</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>Package Used</a></li>
+<li class="divider"></li>
+<li></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Notes for Multivariate Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="factor-analysis-with-principle-component-method" class="section level1">
+<h1><span class="header-section-number">A</span> Factor Analysis with Principle Component Method</h1>
+<div id="principal-component-method-of-factor-analysis-in-r" class="section level2">
+<h2><span class="header-section-number">A.1</span> Principal Component Method of Factor Analysis in R</h2>
+<p>The following example demonstrates factor analysis using the <strong>covariance matrix</strong> with the <code>iris</code> data set in R.</p>
+<pre><code>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+1          5.1         3.5          1.4         0.2  setosa
+2          4.9         3.0          1.4         0.2  setosa
+3          4.7         3.2          1.3         0.2  setosa
+4          4.6         3.1          1.5         0.2  setosa
+5          5.0         3.6          1.4         0.2  setosa
+6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<div id="lambda_i-e_i-of-mathbfs" class="section level3">
+<h3><span class="header-section-number">A.1.1</span> <span class="math inline">\(\lambda_i\)</span> &amp; <span class="math inline">\(e_i\)</span> of <span class="math inline">\(\mathbf{S}\)</span></h3>
+<p>Find the covariance matrix <span class="math inline">\(\mathbf{S}\)</span> with the <code>cov()</code> function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">S &lt;-<span class="st"> </span><span class="kw">cov</span>(iris[,<span class="op">-</span><span class="dv">5</span>])
+<span class="kw">round</span>(S, <span class="dv">3</span>)</code></pre></div>
+<pre><code>             Sepal.Length Sepal.Width Petal.Length Petal.Width
+Sepal.Length        0.686      -0.042        1.274       0.516
+Sepal.Width        -0.042       0.190       -0.330      -0.122
+Petal.Length        1.274      -0.330        3.116       1.296
+Petal.Width         0.516      -0.122        1.296       0.581</code></pre>
+<p>The eigenvalues and eigenvectors are then computed from the covariance matrix with the <code>eigen()</code> function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">S.eigen &lt;-<span class="st"> </span><span class="kw">eigen</span>(S)
+S.eigen</code></pre></div>
+<pre><code>eigen() decomposition
+$values
+[1] 4.22824171 0.24267075 0.07820950 0.02383509
+
+$vectors
+            [,1]        [,2]        [,3]       [,4]
+[1,]  0.36138659 -0.65658877 -0.58202985  0.3154872
+[2,] -0.08452251 -0.73016143  0.59791083 -0.3197231
+[3,]  0.85667061  0.17337266  0.07623608 -0.4798390
+[4,]  0.35828920  0.07548102  0.54583143  0.7536574</code></pre>
+</div>
+<div id="construction-of-hatmathbfl" class="section level3">
+<h3><span class="header-section-number">A.1.2</span> Construction of <span class="math inline">\(\hat{\mathbf{L}}\)</span></h3>
+<p>Before proceeding with factoring <span class="math inline">\(\mathbf{S}\)</span> into <span class="math inline">\(PDP^T\)</span>, the number of factors <span class="math inline">\(m\)</span> must be selected. The last two eigenvalues of <span class="math inline">\(\mathbf{S}\)</span> are practically <span class="math inline">\(0\)</span>, so <span class="math inline">\(m = 2\)</span> is likely a good choice.</p>
+<p>With <span class="math inline">\(m = 2\)</span> factors, construct the <span class="math inline">\(P\)</span> and <span class="math inline">\(D\)</span> matrices from the covariance matrix with the largest two eigenvalues and the corresponding eigenvectors.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">P &lt;-<span class="st"> </span>S.eigen<span class="op">$</span>vectors[,<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">as.matrix</span>()
+
+D &lt;-<span class="st"> </span><span class="kw">diag</span>(S.eigen<span class="op">$</span>values[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>], 
+          <span class="dt">nrow =</span> <span class="kw">dim</span>(P)[<span class="dv">2</span>],
+          <span class="dt">ncol =</span> <span class="kw">dim</span>(P)[<span class="dv">2</span>])</code></pre></div>
+<p><span class="math inline">\(\hat{\mathbf{L}}\)</span> is then found from the <span class="math inline">\(P\)</span> and <span class="math inline">\(D\)</span> matrices as in <span class="math inline">\(\hat{\mathbf{L}} = PD^{1/2}\)</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">S.loadings &lt;-<span class="st"> </span>P <span class="op">%*%</span><span class="st"> </span><span class="kw">sqrt</span>(D)
+<span class="kw">round</span>(S.loadings, <span class="dv">3</span>)</code></pre></div>
+<pre><code>       [,1]   [,2]
+[1,]  0.743 -0.323
+[2,] -0.174 -0.360
+[3,]  1.762  0.085
+[4,]  0.737  0.037</code></pre>
+<p>Which are the <strong>unrotated factor loadings</strong>. We can see where the term <strong>principal component method</strong> is derived from as the columns of <span class="math inline">\(\hat{\mathbf{L}}\)</span> are proportional to the eigenvectors of <span class="math inline">\(\mathbf{S}\)</span>, which are also equal to the corresponding coefficient of the principal components.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Perform PCA and take the resulting first two PCs</span>
+<span class="kw">prcomp</span>(iris[,<span class="op">-</span><span class="dv">5</span>])<span class="op">$</span>rotation[,<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]<span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">round</span>(<span class="dv">3</span>)</code></pre></div>
+<pre><code>                PC1    PC2
+Sepal.Length  0.361 -0.657
+Sepal.Width  -0.085 -0.730
+Petal.Length  0.857  0.173
+Petal.Width   0.358  0.075</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># eigenvector of S from iris</span>
+S.eigen<span class="op">$</span>vectors[,<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>] <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">round</span>(<span class="dv">3</span>)</code></pre></div>
+<pre><code>       [,1]   [,2]
+[1,]  0.361 -0.657
+[2,] -0.085 -0.730
+[3,]  0.857  0.173
+[4,]  0.358  0.075</code></pre>
+</div>
+<div id="variances-communalities-specific-variances" class="section level3">
+<h3><span class="header-section-number">A.1.3</span> Variances: Communalities, &amp; Specific Variances</h3>
+<p>The <strong>communality</strong> <span class="math inline">\(h^2_i\)</span>, as noted previously is the sum of squares of the <strong>row</strong> of <span class="math inline">\(\hat{\mathbf{L}}\)</span>.</p>
+<p><span class="math display">\[ \hat{h}^2_i = \sum^m_{j=1} \hat{\ell}^2_{ij} \]</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">S.h2 &lt;-<span class="st"> </span>S.loadings<span class="op">^</span><span class="dv">2</span> <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">rowSums</span>()
+<span class="kw">round</span>(S.h2, <span class="dv">3</span>)</code></pre></div>
+<pre><code>[1] 0.657 0.160 3.110 0.544</code></pre>
+<p>The sum of squares of the columns of <span class="math inline">\(\hat{\mathbf{L}}\)</span> are the respective eigenvalues of <span class="math inline">\(\mathbf{S}\)</span>, since <span class="math inline">\(\sqrt{\hat{\lambda_i}} \hat{e_i} = \begin{pmatrix} \ell_{i1} \\ \ell_{i2} \\ \vdots \\ \ell_{ip} \\ \end{pmatrix}_{p \times 1}\)</span>, <span class="math inline">\((\sqrt{\hat{\lambda_i}} \hat{e_i})^T (\sqrt{\hat{\lambda_i}} \hat{e_i}) = \hat{\lambda_i}\)</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">colSums</span>(S.loadings<span class="op">^</span><span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">round</span>(<span class="dv">3</span>)</code></pre></div>
+<pre><code>[1] 4.228 0.243</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">S.eigen<span class="op">$</span>values[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">round</span>(<span class="dv">3</span>)</code></pre></div>
+<pre><code>[1] 4.228 0.243</code></pre>
+<div id="specific-variance-psi_i" class="section level4">
+<h4><span class="header-section-number">A.1.3.1</span> Specific variance <span class="math inline">\(\psi_i\)</span></h4>
+<p>The specific variance, <span class="math inline">\(\psi_i\)</span>, is a component unique to the particular variable and is found by subtracting the diagonal of <span class="math inline">\(\mathbf{S}\)</span> by the respective communality <span class="math inline">\(\hat{h}^2_i\)</span>:</p>
+<p><span class="math display">\[ \psi_i = s_{ii} - \hat{h}^2_i \]</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">diag</span>(S) <span class="op">-</span><span class="st"> </span>S.h2 <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">round</span>(<span class="dv">4</span>)</code></pre></div>
+<pre><code>Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
+ 0.028893512  0.030379418  0.005977852  0.036806264 </code></pre>
+</div>
+<div id="proportion-of-variance-due-to-factors" class="section level4">
+<h4><span class="header-section-number">A.1.3.2</span> Proportion of variance due to Factors</h4>
+<p>The proportions of <strong>total variance</strong> of <span class="math inline">\(\mathbf{S}\)</span> due to <strong>common factor</strong> 1 and 2, respectively, are found by dividing the sum of squares of the columns of <span class="math inline">\(\hat{\mathbf{L}}\)</span> by <span class="math inline">\(tr(\mathbf{S}) = \Sigma s_{ii} = \Sigma \lambda_i\)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">var_F1 &lt;-<span class="st"> </span><span class="kw">colSums</span>(S.loadings<span class="op">^</span><span class="dv">2</span>)[<span class="dv">1</span>]
+var_F2 &lt;-<span class="st"> </span><span class="kw">colSums</span>(S.loadings<span class="op">^</span><span class="dv">2</span>)[<span class="dv">2</span>]
+
+<span class="kw">cbind</span>(var_F1 <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(S.eigen<span class="op">$</span>values),
+      var_F2 <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(S.eigen<span class="op">$</span>values)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">round</span>(<span class="dv">3</span>)</code></pre></div>
+<pre><code>      [,1]  [,2]
+[1,] 0.925 0.053</code></pre>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="FA.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/liao961120/MVA.github.io/edit/master/ap_FA_PCmethod.Rmd",
+"text": "Edit"
+},
+"download": ["Notes.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
