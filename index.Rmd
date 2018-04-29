@@ -34,9 +34,9 @@ This is a very simplified book about Multivariate Analysis in R. It is written a
 Feel free to edit (by clicking <i class="fa fa-edit"></i> on the nav bar) if you see any error. Also, forking, modifying, and redistributing are welcomed.
 
 
-## Acknowledgement
+## Acknowledgement {-}
 
-I thank [Aaron Schlegel](https://github.com/aschleg) for letting me modify [his post](https://aaronschlegel.me/factor-analysis-principal-component-method-r.html) on factor analysis with the principle component method. [Chapter 3](FA.html) and [Appendix A](principle-component-method-explained-in-r.html) of this book is largely based on his post.  
+I thank [Aaron Schlegel](https://github.com/aschleg) for letting me modify [his post](https://aaronschlegel.me/factor-analysis-principal-component-method-r.html) on factor analysis with the principle component method. [Chapter 3](FA.html) and [Appendix A](principle-component-method-explained-in-r.html) of this book is largely based on this post.  
 
 <!-- CC Licenese -->
 ## License {-}
