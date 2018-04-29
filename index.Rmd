@@ -36,8 +36,7 @@ Feel free to edit (by clicking <i class="fa fa-edit"></i> on the nav bar) if you
 
 ## Acknowledgement
 
-I thank [Aaron Schlegel](https://github.com/aschleg) for letting me modify [his post](https://aaronschlegel.me/factor-analysis-principal-component-method-r.html) on factor analysis with the principle componet method.  
-[Chapter 3](FA.html) and [Appendix A](principle-component-method-explained-in-r.html) of this book is largely based on his post.  
+I thank [Aaron Schlegel](https://github.com/aschleg) for letting me modify [his post](https://aaronschlegel.me/factor-analysis-principal-component-method-r.html) on factor analysis with the principle componet method. [Chapter 3](FA.html) and [Appendix A](principle-component-method-explained-in-r.html) of this book is largely based on his post.  
 
 <!-- CC Licenese -->
 ## License {-}
