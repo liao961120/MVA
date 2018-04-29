@@ -5,7 +5,6 @@ library(dplyr)
 library(knitr)
 ```
 
-
 Factor analysis is a technique that represents the variables of a dataset $X_1, X_2, \cdots, X_p$ (or $\mathbf{X}_{p \times 1}$) as linearly related to some fewer unobservable variables called factors, denoted $F_1, F_2, \cdots, F_m$ (or $\mathbf{F}_{m \times 1}$). The factors are representative of **latent variables** underlying the original variables, which is hypothetical as they cannot be measured or observed.
 
 
