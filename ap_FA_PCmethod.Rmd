@@ -28,6 +28,8 @@ S  %>%
                       c("striped", "condensed")) %>%
     scroll_box(width = "100%")
 ```
+  
+  
 
 The eigenvalues and eigenvectors are then computed from the covariance matrix with the `eigen()` function.
 
