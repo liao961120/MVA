@@ -8,8 +8,8 @@ bookdown::gitbook:
         <li><a href="./index.html">R Notes for Multivariate Analysis</a></li>
       after: |
         <li></li>
-    download: ["pdf"]
-    edit: https://github.com/liao961120/MVA.github.io/edit/master/%s
+    #download: 
+    edit: https://github.com/liao961120/MVA/edit/master/%s
     sharing:
       github: yes
       facebook: no
