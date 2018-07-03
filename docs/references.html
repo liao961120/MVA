@@ -7,14 +7,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>R Notes for Multivariate Analysis</title>
   <meta name="description" content="This is a note for multivariate analysis in R.">
-  <meta name="generator" content="bookdown 0.6 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="R Notes for Multivariate Analysis" />
   <meta property="og:type" content="book" />
   
   
   <meta property="og:description" content="This is a note for multivariate analysis in R." />
-  <meta name="github-repo" content="liao961120/MVA.github.io" />
+  <meta name="github-repo" content="liao961120/MVA" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="R Notes for Multivariate Analysis" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Yongfu, Liao">
 
 
-<meta name="date" content="2018-04-29">
+<meta name="date" content="2018-07-04">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -47,10 +47,11 @@
 
 
 
-<script src="libs/htmlwidgets-1.0/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-<script src="libs/grViz-binding-0.9.2/grViz.js"></script>
+<script src="libs/grViz-binding-1.0.0/grViz.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
 
 
 <style type="text/css">
@@ -108,7 +109,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a><ul>
-<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#acknowledgement"><i class="fa fa-check"></i><b>0.1</b> Acknowledgement</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgement"><i class="fa fa-check"></i>Acknowledgement</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i>License</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="mvnorm.html"><a href="mvnorm.html"><i class="fa fa-check"></i><b>1</b> Multivariate Normal Distribution &amp; Covariance Matrix</a><ul>
@@ -187,10 +188,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <div id="refs" class="references">
 <div>
-<p>Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, and Winston Chang. 2017. <em>Rmarkdown: Dynamic Documents for R</em>. <a href="https://CRAN.R-project.org/package=rmarkdown" class="uri">https://CRAN.R-project.org/package=rmarkdown</a>.</p>
+<p>Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, and Winston Chang. 2018. <em>Rmarkdown: Dynamic Documents for R</em>. <a href="https://CRAN.R-project.org/package=rmarkdown" class="uri">https://CRAN.R-project.org/package=rmarkdown</a>.</p>
+</div>
+<div>
+<p>Bache, Stefan Milton, and Hadley Wickham. 2014. <em>Magrittr: A Forward-Pipe Operator for R</em>. <a href="https://CRAN.R-project.org/package=magrittr" class="uri">https://CRAN.R-project.org/package=magrittr</a>.</p>
 </div>
 <div>
 <p>Genz, Alan, Frank Bretz, Tetsuhisa Miwa, Xuefei Mi, and Torsten Hothorn. 2018. <em>Mvtnorm: Multivariate Normal and T Distributions</em>. <a href="https://CRAN.R-project.org/package=mvtnorm" class="uri">https://CRAN.R-project.org/package=mvtnorm</a>.</p>
+</div>
+<div>
+<p>Henry, Lionel, and Hadley Wickham. 2017. <em>Purrr: Functional Programming Tools</em>. <a href="https://CRAN.R-project.org/package=purrr" class="uri">https://CRAN.R-project.org/package=purrr</a>.</p>
+</div>
+<div>
+<p>Iannone, Richard. 2018. <em>DiagrammeR: Graph/Network Visualization</em>. <a href="https://CRAN.R-project.org/package=DiagrammeR" class="uri">https://CRAN.R-project.org/package=DiagrammeR</a>.</p>
 </div>
 <div>
 <p>Kassambara, Alboukadel, and Fabian Mundt. 2017. <em>Factoextra: Extract and Visualize the Results of Multivariate Data Analyses</em>. <a href="https://CRAN.R-project.org/package=factoextra" class="uri">https://CRAN.R-project.org/package=factoextra</a>.</p>
@@ -202,25 +212,31 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Meschiari, Stefano. 2015. <em>Latex2exp: Use Latex Expressions in Plots</em>. <a href="https://CRAN.R-project.org/package=latex2exp" class="uri">https://CRAN.R-project.org/package=latex2exp</a>.</p>
 </div>
 <div>
-<p>Muller, Kirill. 2017. <em>Bindrcpp: An ’Rcpp’ Interface to Active Bindings</em>. <a href="https://CRAN.R-project.org/package=bindrcpp" class="uri">https://CRAN.R-project.org/package=bindrcpp</a>.</p>
-</div>
-<div>
 <p>Murdoch, Duncan, and E. D. Chow. 2018. <em>Ellipse: Functions for Drawing Ellipses and Ellipse-Like Confidence Regions</em>. <a href="https://CRAN.R-project.org/package=ellipse" class="uri">https://CRAN.R-project.org/package=ellipse</a>.</p>
 </div>
 <div>
-<p>R Core Team. 2017. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/" class="uri">https://www.R-project.org/</a>.</p>
+<p>Müller, Kirill. 2018. <em>Bindrcpp: An ’Rcpp’ Interface to Active Bindings</em>. <a href="https://CRAN.R-project.org/package=bindrcpp" class="uri">https://CRAN.R-project.org/package=bindrcpp</a>.</p>
 </div>
 <div>
-<p>Revelle, William. 2017. <em>Psych: Procedures for Psychological, Psychometric, and Personality Research</em>. <a href="https://CRAN.R-project.org/package=psych" class="uri">https://CRAN.R-project.org/package=psych</a>.</p>
+<p>Pebesma, Edzer. 2018. <em>Sf: Simple Features for R</em>. <a href="https://CRAN.R-project.org/package=sf" class="uri">https://CRAN.R-project.org/package=sf</a>.</p>
 </div>
 <div>
-<p>Sveidqvist, Knut, Mike Bostock, Chris Pettitt, Mike Daines, and Richard Iannone. 2017. <em>DiagrammeR: Graph/Network Visualization</em>. <a href="https://CRAN.R-project.org/package=DiagrammeR" class="uri">https://CRAN.R-project.org/package=DiagrammeR</a>.</p>
+<p>R Core Team. 2018. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/" class="uri">https://www.R-project.org/</a>.</p>
 </div>
 <div>
-<p>Wickham, Hadley, and Winston Chang. 2018. <em>Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics</em>.</p>
+<p>Revelle, William. 2018. <em>Psych: Procedures for Psychological, Psychometric, and Personality Research</em>. <a href="https://CRAN.R-project.org/package=psych" class="uri">https://CRAN.R-project.org/package=psych</a>.</p>
 </div>
 <div>
-<p>Wickham, Hadley, Romain Francois, Lionel Henry, and Kirill Muller. 2017. <em>Dplyr: A Grammar of Data Manipulation</em>. <a href="https://CRAN.R-project.org/package=dplyr" class="uri">https://CRAN.R-project.org/package=dplyr</a>.</p>
+<p>RStudio, and Inc. 2017. <em>Htmltools: Tools for Html</em>. <a href="https://CRAN.R-project.org/package=htmltools" class="uri">https://CRAN.R-project.org/package=htmltools</a>.</p>
+</div>
+<div>
+<p>Wickham, Hadley, and Lionel Henry. 2018. <em>Tidyr: Easily Tidy Data with ’Spread()’ and ’Gather()’ Functions</em>. <a href="https://CRAN.R-project.org/package=tidyr" class="uri">https://CRAN.R-project.org/package=tidyr</a>.</p>
+</div>
+<div>
+<p>Wickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen, Kohske Takahashi, Claus Wilke, and Kara Woo. 2018. <em>Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics</em>.</p>
+</div>
+<div>
+<p>Wickham, Hadley, Romain François, Lionel Henry, and Kirill Müller. 2018. <em>Dplyr: A Grammar of Data Manipulation</em>. <a href="https://CRAN.R-project.org/package=dplyr" class="uri">https://CRAN.R-project.org/package=dplyr</a>.</p>
 </div>
 <div>
 <p>Xie, Yihui. 2015. <em>Dynamic Documents with R and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.name/knitr/" class="uri">http://yihui.name/knitr/</a>.</p>
@@ -269,10 +285,11 @@ gitbook.start({
 "facebook": false,
 "twitter": false,
 "google": false,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
