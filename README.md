@@ -2,7 +2,7 @@ R Notes for Multivariate Analysis
 =======================================
 
 
-[![Build Status](https://travis-ci.org/liao961120/MVA.github.io.svg?branch=master)](https://travis-ci.org/liao961120/MVA.github.io)
+[![Build Status](https://travis-ci.org/liao961120/MVA.svg?branch=master)](https://travis-ci.org/liao961120/MVA)
 
 This is the source of [R Notes for Multivariate Analysis](https://liao961120.github.io/MVA/), a very simplified book about Multivariate Analysis in R.
 
