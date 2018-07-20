@@ -22,17 +22,16 @@ The Concept of Factor Analysis
 
 The **Orthogonal Factor Model** posits that each variable, $X_i$ is a combination of the underlying latent variables, $F_1, F_2, \cdots, F_m$. For the variables in any of the observation vectors in a sample, the model is defined as:
 
-$$
+
 \begin{equation}
 \begin{split}
-X_1 - \mu_1 = \ell_{11} F_1 + \ell_{12} F_2 + \cdots + \ell_{1m} F_m + \varepsilon_1 \\
-X_2 - \mu_2 = \ell_{21} F_1 + \ell_{22} F_2 + \cdots + \ell_{2m} F_m + \varepsilon_2 \\
-\vdots \\
-X_p - \mu_p = \ell_{p1} F_1 + \ell_{p2} F_2 + \cdots + \ell_{pm} F_m + \varepsilon_p
+X_1 - \mu_1 = \ell_{11} F_1 + \ell_{12} F_2 + &\cdots + \ell_{1m} F_m + \varepsilon_1 \\
+X_2 - \mu_2 = \ell_{21} F_1 + \ell_{22} F_2 + &\cdots + \ell_{2m} F_m + \varepsilon_2 \\
+& ~~ \vdots \\
+X_p - \mu_p = \ell_{p1} F_1 + \ell_{p2} F_2 + &\cdots + \ell_{pm} F_m + \varepsilon_p
 \end{split}
 (\#eq:model)
 \end{equation}
-$$
 
 , or
 
@@ -45,11 +44,11 @@ $$
 There are several assumptions that must be made regarding the relationships of the factor model described above.
 
 1. **Factors are independent** of each other.
-    - $E(F_j) = 0$, $var(F_j) = 1$ 
+    - $E(F_j) = 0$, $Var(F_j) = 1$ 
     - $Cov(F_j, F_k) = 0$ where $j \neq k$
 
 2. The error terms $\varepsilon_i$ are **independent** of each other.
-    - $E(\varepsilon) = 0$, $var(\varepsilon_i) = \psi_i$
+    - $E(\varepsilon) = 0$, $Var(\varepsilon_i) = \psi_i$
     - $Cov(\varepsilon_i, \varepsilon_j) = 0$.
 
 3. $\varepsilon_i$ and $F_j$ are **independent**: $Cov(\varepsilon_i, F_j) = 0$.
