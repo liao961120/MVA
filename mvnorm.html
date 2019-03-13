@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 1 Multivariate Normal Distribution &amp; Covariance Matrix | R Notes for Multivariate Analysis</title>
-  <meta name="description" content="This is a note for multivariate analysis in R.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="This is a note for multivariate analysis in R." />
+  <meta name="generator" content="bookdown  and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 1 Multivariate Normal Distribution &amp; Covariance Matrix | R Notes for Multivariate Analysis" />
   <meta property="og:type" content="book" />
@@ -22,16 +21,16 @@
   <meta name="twitter:description" content="This is a note for multivariate analysis in R." />
   
 
-<meta name="author" content="Yongfu, Liao">
+<meta name="author" content="Yongfu, Liao" />
 
 
-<meta name="date" content="2019-02-13">
+<meta name="date" content="2019-03-13" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="icon-152x152.png">
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="icon-152x152.png" />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="index.html">
 <link rel="next" href="PCA.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -295,33 +294,9 @@ is.installed &lt;-<span class="st"> </span><span class="cf">function</span>(mypk
 <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.installed</span>(<span class="st">&quot;mat2tex&quot;</span>)){
     <span class="kw">library</span>(devtools)
     <span class="kw">install_github</span>(<span class="st">&quot;markheckmann/mat2tex&quot;</span>)
-}</code></pre></div>
-<pre><code>  
-   checking for file ‘/tmp/RtmpideFlh/remotes4865181a063/markheckmann-mat2tex-d6ba4c1/DESCRIPTION’ ...
-  
-✔  checking for file ‘/tmp/RtmpideFlh/remotes4865181a063/markheckmann-mat2tex-d6ba4c1/DESCRIPTION’
+}
 
-  
-─  preparing ‘mat2tex’:
-
-  
-   checking DESCRIPTION meta-information ...
-  
-✔  checking DESCRIPTION meta-information
-
-  
-─  checking for LF line-endings in source and make files and shell scripts
-
-  
-─  checking for empty or unneeded directories
-
-  
-─  building ‘mat2tex_0.1.9002.tar.gz’
-
-  
-   
-</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(mat2tex)
+<span class="kw">library</span>(mat2tex)
 cov.mt &lt;-<span class="st"> </span><span class="kw">cov</span>(iris[,<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]) ## Cov Matrix of variable 1~4
 cor.mt &lt;-<span class="st"> </span><span class="kw">cor</span>(iris[,<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]) ## Cor Matrix of variable 1~4</code></pre></div>
 <p>Covariance matrix <span class="math inline">\(= \begin{pmatrix}  0.69 &amp; -0.04 &amp; 1.27 &amp; 0.52 \\  -0.04 &amp; 0.19 &amp; -0.33 &amp; -0.12 \\  1.27 &amp; -0.33 &amp; 3.12 &amp; 1.30 \\  0.52 &amp; -0.12 &amp; 1.30 &amp; 0.58 \\  \end{pmatrix}\)</span></p>
