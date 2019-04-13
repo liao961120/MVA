@@ -1,5 +1,7 @@
 language: r
 pandoc_version: 1.19.2.1
+
+r_github_packages: r-lib/remotes#340
     
 script:
   - Rscript -e 'bookdown::render_book("index.Rmd", "bookdown::gitbook")'

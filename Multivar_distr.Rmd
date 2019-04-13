@@ -124,8 +124,7 @@ is.installed <- function(mypkg){
 
 # check if package "hydroGOF" is installed
 if (!is.installed("mat2tex")){
-    library(devtools)
-    install_github("markheckmann/mat2tex")
+    remotes::install_github("markheckmann/mat2tex")
 }
 
 library(mat2tex)

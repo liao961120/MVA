@@ -61,11 +61,10 @@ Note the assumption $Cov(\varepsilon_i, \varepsilon_j) = 0$ implies the
 
 With the assumptions above,
 
-$$
 \begin{equation} 
 \begin{split}
-& \bm{\Sigma}_{p \times p} = Cov(\bm{X}_{p \times p}) = \bm{L L^T}_{p \times p} + \bm{\Psi}_{p \times p} \\ \\
- , where ~~ & \bm{L}_{p \times m} = 
+& \bm{\Sigma}_{p \times p} = Cov(\bm{X}_{p \times p}) = \bm{L L^T}_{p \times p} + \bm{\Psi}_{p \times p}~, ~~where \\
+& \bm{L}_{p \times m} = 
 \begin{pmatrix} 
 \ell_{11} & \ell_{12} & \cdots & \ell_{1m} \\
 \vdots    & \vdots    & \ddots & \vdots    \\
@@ -80,7 +79,6 @@ $$
 \end{split}
 (\#eq:covmt)
 \end{equation} 
-$$
   
 <br><br>
 
