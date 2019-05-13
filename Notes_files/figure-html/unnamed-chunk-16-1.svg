@@ -154,6 +154,9 @@
 </symbol>
 </g>
 <clipPath id="clip1">
+  <path d="M 65 136 L 73 136 L 73 142.558594 L 65 142.558594 Z M 65 136 "/>
+</clipPath>
+<clipPath id="clip2">
   <path d="M 316 59.039062 L 323 59.039062 L 323 66 L 316 66 Z M 316 59.039062 "/>
 </clipPath>
 </defs>
@@ -181,7 +184,9 @@
 <path style="fill:none;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 180.417969 128.730469 C 180.417969 132.332031 175.019531 132.332031 175.019531 128.730469 C 175.019531 125.132812 180.417969 125.132812 180.417969 128.730469 "/>
 <path style="fill:none;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 239.621094 122.699219 C 239.621094 126.300781 234.222656 126.300781 234.222656 122.699219 C 234.222656 119.101562 239.621094 119.101562 239.621094 122.699219 "/>
 <path style="fill:none;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 196.007812 128.511719 C 196.007812 132.113281 190.605469 132.113281 190.605469 128.511719 C 190.605469 124.914062 196.007812 124.914062 196.007812 128.511719 "/>
+<g clip-path="url(#clip1)" clip-rule="nonzero">
 <path style="fill:none;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 71.765625 139.464844 C 71.765625 143.066406 66.367188 143.066406 66.367188 139.464844 C 66.367188 135.867188 71.765625 135.867188 71.765625 139.464844 "/>
+</g>
 <path style="fill:none;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 231.050781 124.527344 C 231.050781 128.128906 225.652344 128.128906 225.652344 124.527344 C 225.652344 120.929688 231.050781 120.929688 231.050781 124.527344 "/>
 <path style="fill:none;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 236.648438 123.691406 C 236.648438 127.292969 231.25 127.292969 231.25 123.691406 C 231.25 120.09375 236.648438 120.09375 236.648438 123.691406 "/>
 <path style="fill:none;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 223.308594 126.105469 C 223.308594 129.703125 217.90625 129.703125 217.90625 126.105469 C 217.90625 122.503906 223.308594 122.503906 223.308594 126.105469 "/>
@@ -211,7 +216,7 @@
 <path style="fill:none;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 170.894531 129.867188 C 170.894531 133.46875 165.492188 133.46875 165.492188 129.867188 C 165.492188 126.269531 170.894531 126.269531 170.894531 129.867188 "/>
 <path style="fill:none;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 299.710938 64.773438 C 299.710938 68.375 294.3125 68.375 294.3125 64.773438 C 294.3125 61.175781 299.710938 61.175781 299.710938 64.773438 "/>
 <path style="fill:none;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 266.757812 71.976562 C 266.757812 75.574219 261.359375 75.574219 261.359375 71.976562 C 261.359375 68.375 266.757812 68.375 266.757812 71.976562 "/>
-<g clip-path="url(#clip1)" clip-rule="nonzero">
+<g clip-path="url(#clip2)" clip-rule="nonzero">
 <path style="fill:none;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 322.433594 62.132812 C 322.433594 65.734375 317.035156 65.734375 317.035156 62.132812 C 317.035156 58.535156 322.433594 58.535156 322.433594 62.132812 "/>
 </g>
 <path style="fill:none;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 257.324219 83.902344 C 257.324219 87.503906 251.925781 87.503906 251.925781 83.902344 C 251.925781 80.304688 257.324219 80.304688 257.324219 83.902344 "/>

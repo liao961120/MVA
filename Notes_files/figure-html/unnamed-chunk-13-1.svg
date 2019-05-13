@@ -63,6 +63,9 @@
 <clipPath id="clip1">
   <path d="M 65 59.039062 L 73 59.039062 L 73 66 L 65 66 Z M 65 59.039062 "/>
 </clipPath>
+<clipPath id="clip2">
+  <path d="M 316 136 L 323 136 L 323 142.558594 L 316 142.558594 Z M 316 136 "/>
+</clipPath>
 </defs>
 <g id="surface8">
 <rect x="0" y="0" width="360" height="216" style="fill:rgb(100%,100%,100%);fill-opacity:1;stroke:none;"/>
@@ -72,7 +75,9 @@
 <path style="fill:none;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 71.765625 62.132812 C 71.765625 65.734375 66.367188 65.734375 66.367188 62.132812 C 66.367188 58.535156 71.765625 58.535156 71.765625 62.132812 "/>
 </g>
 <path style="fill:none;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 197.101562 135.59375 C 197.101562 139.191406 191.699219 139.191406 191.699219 135.59375 C 191.699219 131.992188 197.101562 131.992188 197.101562 135.59375 "/>
+<g clip-path="url(#clip2)" clip-rule="nonzero">
 <path style="fill:none;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 322.433594 139.464844 C 322.433594 143.066406 317.035156 143.066406 317.035156 139.464844 C 317.035156 135.867188 322.433594 135.867188 322.433594 139.464844 "/>
+</g>
 <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
   <use xlink:href="#glyph0-1" x="191.898438" y="34.116211"/>
 </g>
