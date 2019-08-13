@@ -24,15 +24,15 @@
 <meta name="author" content="Yongfu, Liao" />
 
 
-<meta name="date" content="2019-07-13" />
+<meta name="date" content="2019-08-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <link rel="apple-touch-icon-precomposed" sizes="152x152" href="icon-152x152.png" />
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="prev" href="mvnorm.html">
-<link rel="next" href="FA.html">
+<link rel="prev" href="mvnorm.html"/>
+<link rel="next" href="FA.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -189,13 +189,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">2.1</span> Workflow of PCA</h2>
 <div id="conceptual" class="section level3">
 <h3><span class="header-section-number">2.1.1</span> Conceptual</h3>
-<div id="htmlwidget-fd791227180077d8b708" style="width:480px;height:288px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-fd791227180077d8b708">{"x":{"diagram":"\ndigraph { //non-directed graph\n      graph [layout = dot]  //layout = dot|neato|twopi|circo|fdp\n      rankdir=TB    // TB|RL|LR, LR: Left to Right orientation\n\n      node [shape = box,\n      style = filled,  margin=0.3]\n      \n      node [fillcolor = gray]\n      data [label = \"Data\"]\n      \n      node [fillcolor = orange1]  //orange1-4\n      cov [label = \"Cov Matrix\"]\n      eigen [label = \"Eigenvalue & Eigenvector\"]\n      PC [label = \"Principle Components\" fillcolor = OrangeRed]\n      \n      edge [color = grey3, arrowhead = normal, arrowtail = none]\n      cov -> eigen [label=\"Compute\"]\n      \n      edge [color = grey, arrowhead = normal, arrowtail = none]\n      data -> cov [label=\"Compute\"]\n      data -> eigen [label=\"Input\"]\n      eigen -> PC [label=\"Rotate\"]\n}\n\n      ","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-250ee93148af3a2b5533" style="width:480px;height:288px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-250ee93148af3a2b5533">{"x":{"diagram":"\ndigraph { //non-directed graph\n      graph [layout = dot]  //layout = dot|neato|twopi|circo|fdp\n      rankdir=TB    // TB|RL|LR, LR: Left to Right orientation\n\n      node [shape = box,\n      style = filled,  margin=0.3]\n      \n      node [fillcolor = gray]\n      data [label = \"Data\"]\n      \n      node [fillcolor = orange1]  //orange1-4\n      cov [label = \"Cov Matrix\"]\n      eigen [label = \"Eigenvalue & Eigenvector\"]\n      PC [label = \"Principle Components\" fillcolor = OrangeRed]\n      \n      edge [color = grey3, arrowhead = normal, arrowtail = none]\n      cov -> eigen [label=\"Compute\"]\n      \n      edge [color = grey, arrowhead = normal, arrowtail = none]\n      data -> cov [label=\"Compute\"]\n      data -> eigen [label=\"Input\"]\n      eigen -> PC [label=\"Rotate\"]\n}\n\n      ","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="computational-with-r" class="section level3">
 <h3><span class="header-section-number">2.1.2</span> Computational (with R)</h3>
-<div id="htmlwidget-daab4f6ebab9fcdd6396" style="width:480px;height:288px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-daab4f6ebab9fcdd6396">{"x":{"diagram":"\ndigraph { //non-directed graph\n      graph [layout = dot]  //layout = dot|neato|twopi|circo|fdp\n      rankdir=TB    // TB|RL|LR, LR: Left to Right orientation\n\n      node [shape = box,\n      style = filled,  margin=0.18]\n      \n      node [fillcolor = gray]\n      data [label = \"Data\"]\n      PC [label = \"Principle Components\" fillcolor = OrangeRed]\n      \n      node [fillcolor = WhiteSmoke, shape = oval]  //orange1-4\n      sdev [label = \"sdev: std of PCs\"]\n      rotation [label = \"rotation: Loading of PCs on origin vars\"]\n      x [label = \"x: Rotated Data\"]\n\n      node [fillcolor = Gold, shape = box]\n      Scree [label = \"Scree Plot\"]\n      Interpret [label = \"Interpret grouping of vars\"]\n      QQplot [label = \"Q-Q Plot: Single PC\"]\n      scatter [label = \"Scatter Plot of 2 PCs\"]\n      \n      edge [color = Darkgray, arrowhead = normal, arrowtail = none]\n      data -> PC [label=\"prcomp()\"]\n      sdev -> Scree [label = \"factoextra::fviz_eig()\"]\n      rotation -> Interpret\n      x -> {QQplot scatter}\n\n      edge [style=dashed, color = grey, arrowhead = none, arrowtail = none]\n      PC -> {sdev rotation x}\n}\n\n      ","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-7c7fe8ab82086e40798a" style="width:480px;height:288px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7c7fe8ab82086e40798a">{"x":{"diagram":"\ndigraph { //non-directed graph\n      graph [layout = dot]  //layout = dot|neato|twopi|circo|fdp\n      rankdir=TB    // TB|RL|LR, LR: Left to Right orientation\n\n      node [shape = box,\n      style = filled,  margin=0.18]\n      \n      node [fillcolor = gray]\n      data [label = \"Data\"]\n      PC [label = \"Principle Components\" fillcolor = OrangeRed]\n      \n      node [fillcolor = WhiteSmoke, shape = oval]  //orange1-4\n      sdev [label = \"sdev: std of PCs\"]\n      rotation [label = \"rotation: Loading of PCs on origin vars\"]\n      x [label = \"x: Rotated Data\"]\n\n      node [fillcolor = Gold, shape = box]\n      Scree [label = \"Scree Plot\"]\n      Interpret [label = \"Interpret grouping of vars\"]\n      QQplot [label = \"Q-Q Plot: Single PC\"]\n      scatter [label = \"Scatter Plot of 2 PCs\"]\n      \n      edge [color = Darkgray, arrowhead = normal, arrowtail = none]\n      data -> PC [label=\"prcomp()\"]\n      sdev -> Scree [label = \"factoextra::fviz_eig()\"]\n      rotation -> Interpret\n      x -> {QQplot scatter}\n\n      edge [style=dashed, color = grey, arrowhead = none, arrowtail = none]\n      PC -> {sdev rotation x}\n}\n\n      ","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <ul>
 <li>Note: <code>sdev</code> of <code>prcomp()</code> are <strong>Standard Deviations</strong>. To get the eigenvalues of the covariance (correlation) matrix, or equivalently, variances of the principle components, you need to <strong>square <code>sdev</code></strong>.</li>
 </ul>
@@ -395,8 +395,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
