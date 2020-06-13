@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 1 Multivariate Normal Distribution &amp; Covariance Matrix | R Notes for Multivariate Analysis</title>
   <meta name="description" content="This is a note for multivariate analysis in R." />
-  <meta name="generator" content="bookdown 0.18.3 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.19.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 1 Multivariate Normal Distribution &amp; Covariance Matrix | R Notes for Multivariate Analysis" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Yongfu, Liao" />
 
 
-<meta name="date" content="2020-05-13" />
+<meta name="date" content="2020-06-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -199,12 +199,12 @@ theme &lt;-<span class="st"> </span><span class="kw">theme</span>(<span class="d
 <h2><span class="header-section-number">1.1</span> Bivariate Normal Contour Map</h2>
 <div id="ellipse" class="section level3">
 <h3><span class="header-section-number">1.1.1</span> <code>ellipse()</code></h3>
-<p><code>ellipse()</code> from ellipse <span class="citation">(Murdoch and Chow <a href="#ref-R-ellipse">2018</a>)</span> is used to generate ellipse data based on a correlation/covariance matrix.</p>
+<p><code>ellipse()</code> from ellipse <span class="citation">(Murdoch and Chow <a href="#ref-R-ellipse">2020</a>)</span> is used to generate ellipse data based on a correlation/covariance matrix.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ellipse</span>(x, scale, centre, level, <span class="dt">npoints =</span> <span class="dv">1000</span>)</code></pre></div>
 <ul>
 <li><p><code>x</code>: a single number, correlation of the two variables.</p></li>
 <li><p><code>scale</code>: vector, <strong>standard deviation</strong> of the two variables.</p></li>
-<li><p><code>centre</code>: vector, center of the ellipse, i.e. the mean vector of the bivariate normal distribution.</p></li>
+<li><p><code>centre</code>: vector, center of the ellipse, i.e. the mean vector of the bivariate normal distribution.</p></li>
 <li><p><code>level</code>: a single number, the contour probability.</p></li>
 <li><p><code>npoints</code>: number of points used to draw the contour.</p></li>
 </ul>
@@ -298,9 +298,9 @@ is.installed &lt;-<span class="st"> </span><span class="cf">function</span>(mypk
     remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;markheckmann/mat2tex&quot;</span>)
 }</code></pre></div>
 <pre><code>  
-   checking for file ‘/tmp/Rtmp9T4Dmk/remotes1ed538bf7aa3/markheckmann-mat2tex-d6ba4c1/DESCRIPTION’ ...
+   checking for file ‘/tmp/Rtmpack0ok/remotes1db24a4a9e4b/markheckmann-mat2tex-d6ba4c1/DESCRIPTION’ ...
   
-✔  checking for file ‘/tmp/Rtmp9T4Dmk/remotes1ed538bf7aa3/markheckmann-mat2tex-d6ba4c1/DESCRIPTION’
+✔  checking for file ‘/tmp/Rtmpack0ok/remotes1db24a4a9e4b/markheckmann-mat2tex-d6ba4c1/DESCRIPTION’
 
   
 ─  preparing ‘mat2tex’:
@@ -334,7 +334,7 @@ cor.mt &lt;-<span class="st"> </span><span class="kw">cor</span>(iris[,<span cla
 <h3>Package Used</h3>
 <div id="refs" class="references">
 <div id="ref-R-ellipse">
-<p>Murdoch, Duncan, and E. D. Chow. 2018. <em>Ellipse: Functions for Drawing Ellipses and Ellipse-Like Confidence Regions</em>. <a href="https://CRAN.R-project.org/package=ellipse" class="uri">https://CRAN.R-project.org/package=ellipse</a>.</p>
+<p>Murdoch, Duncan, and E. D. Chow. 2020. <em>Ellipse: Functions for Drawing Ellipses and Ellipse-Like Confidence Regions</em>. <a href="https://CRAN.R-project.org/package=ellipse" class="uri">https://CRAN.R-project.org/package=ellipse</a>.</p>
 </div>
 </div>
             </section>

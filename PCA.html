@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Principle Component Analysis | R Notes for Multivariate Analysis</title>
   <meta name="description" content="This is a note for multivariate analysis in R." />
-  <meta name="generator" content="bookdown 0.18.3 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.19.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Principle Component Analysis | R Notes for Multivariate Analysis" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Yongfu, Liao" />
 
 
-<meta name="date" content="2020-05-13" />
+<meta name="date" content="2020-06-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -192,13 +192,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">2.1</span> Workflow of PCA</h2>
 <div id="conceptual" class="section level3">
 <h3><span class="header-section-number">2.1.1</span> Conceptual</h3>
-<div id="htmlwidget-da9903195a39941a39a6" style="width:480px;height:288px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-da9903195a39941a39a6">{"x":{"diagram":"\ndigraph { //non-directed graph\n      graph [layout = dot]  //layout = dot|neato|twopi|circo|fdp\n      rankdir=TB    // TB|RL|LR, LR: Left to Right orientation\n\n      node [shape = box,\n      style = filled,  margin=0.3]\n      \n      node [fillcolor = gray]\n      data [label = \"Data\"]\n      \n      node [fillcolor = orange1]  //orange1-4\n      cov [label = \"Cov Matrix\"]\n      eigen [label = \"Eigenvalue & Eigenvector\"]\n      PC [label = \"Principle Components\" fillcolor = OrangeRed]\n      \n      edge [color = grey3, arrowhead = normal, arrowtail = none]\n      cov -> eigen [label=\"Compute\"]\n      \n      edge [color = grey, arrowhead = normal, arrowtail = none]\n      data -> cov [label=\"Compute\"]\n      data -> eigen [label=\"Input\"]\n      eigen -> PC [label=\"Rotate\"]\n}\n\n      ","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-cdc78587ae03048e42fc" style="width:480px;height:288px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-cdc78587ae03048e42fc">{"x":{"diagram":"\ndigraph { //non-directed graph\n      graph [layout = dot]  //layout = dot|neato|twopi|circo|fdp\n      rankdir=TB    // TB|RL|LR, LR: Left to Right orientation\n\n      node [shape = box,\n      style = filled,  margin=0.3]\n      \n      node [fillcolor = gray]\n      data [label = \"Data\"]\n      \n      node [fillcolor = orange1]  //orange1-4\n      cov [label = \"Cov Matrix\"]\n      eigen [label = \"Eigenvalue & Eigenvector\"]\n      PC [label = \"Principle Components\" fillcolor = OrangeRed]\n      \n      edge [color = grey3, arrowhead = normal, arrowtail = none]\n      cov -> eigen [label=\"Compute\"]\n      \n      edge [color = grey, arrowhead = normal, arrowtail = none]\n      data -> cov [label=\"Compute\"]\n      data -> eigen [label=\"Input\"]\n      eigen -> PC [label=\"Rotate\"]\n}\n\n      ","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="computational-with-r" class="section level3">
 <h3><span class="header-section-number">2.1.2</span> Computational (with R)</h3>
-<div id="htmlwidget-53e1b6526f4ed6a08c80" style="width:480px;height:288px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-53e1b6526f4ed6a08c80">{"x":{"diagram":"\ndigraph { //non-directed graph\n      graph [layout = dot]  //layout = dot|neato|twopi|circo|fdp\n      rankdir=TB    // TB|RL|LR, LR: Left to Right orientation\n\n      node [shape = box,\n      style = filled,  margin=0.18]\n      \n      node [fillcolor = gray]\n      data [label = \"Data\"]\n      PC [label = \"Principle Components\" fillcolor = OrangeRed]\n      \n      node [fillcolor = WhiteSmoke, shape = oval]  //orange1-4\n      sdev [label = \"sdev: std of PCs\"]\n      rotation [label = \"rotation: Loading of PCs on origin vars\"]\n      x [label = \"x: Rotated Data\"]\n\n      node [fillcolor = Gold, shape = box]\n      Scree [label = \"Scree Plot\"]\n      Interpret [label = \"Interpret grouping of vars\"]\n      QQplot [label = \"Q-Q Plot: Single PC\"]\n      scatter [label = \"Scatter Plot of 2 PCs\"]\n      \n      edge [color = Darkgray, arrowhead = normal, arrowtail = none]\n      data -> PC [label=\"prcomp()\"]\n      sdev -> Scree [label = \"factoextra::fviz_eig()\"]\n      rotation -> Interpret\n      x -> {QQplot scatter}\n\n      edge [style=dashed, color = grey, arrowhead = none, arrowtail = none]\n      PC -> {sdev rotation x}\n}\n\n      ","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-19e75f4b4a5ef7dfe143" style="width:480px;height:288px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-19e75f4b4a5ef7dfe143">{"x":{"diagram":"\ndigraph { //non-directed graph\n      graph [layout = dot]  //layout = dot|neato|twopi|circo|fdp\n      rankdir=TB    // TB|RL|LR, LR: Left to Right orientation\n\n      node [shape = box,\n      style = filled,  margin=0.18]\n      \n      node [fillcolor = gray]\n      data [label = \"Data\"]\n      PC [label = \"Principle Components\" fillcolor = OrangeRed]\n      \n      node [fillcolor = WhiteSmoke, shape = oval]  //orange1-4\n      sdev [label = \"sdev: std of PCs\"]\n      rotation [label = \"rotation: Loading of PCs on origin vars\"]\n      x [label = \"x: Rotated Data\"]\n\n      node [fillcolor = Gold, shape = box]\n      Scree [label = \"Scree Plot\"]\n      Interpret [label = \"Interpret grouping of vars\"]\n      QQplot [label = \"Q-Q Plot: Single PC\"]\n      scatter [label = \"Scatter Plot of 2 PCs\"]\n      \n      edge [color = Darkgray, arrowhead = normal, arrowtail = none]\n      data -> PC [label=\"prcomp()\"]\n      sdev -> Scree [label = \"factoextra::fviz_eig()\"]\n      rotation -> Interpret\n      x -> {QQplot scatter}\n\n      edge [style=dashed, color = grey, arrowhead = none, arrowtail = none]\n      PC -> {sdev rotation x}\n}\n\n      ","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <ul>
 <li>Note: <code>sdev</code> of <code>prcomp()</code> are <strong>Standard Deviations</strong>. To get the eigenvalues of the covariance (correlation) matrix, or equivalently, variances of the principle components, you need to <strong>square <code>sdev</code></strong>.</li>
 </ul>
@@ -211,7 +211,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>The function <code>prcomp()</code> in base R <code>stats</code> package performs principle component analysis to input <code>data.frame</code>(with observations as rows and variables as columns), but it returns neither covariance nor correlation matrix. You can compute them directly by passing <code>data.frame</code> to <code>cor()</code> and <code>cov()</code> directly in R without any additional package.</p>
 
 <div class="bs-callout bs-callout-warning">
-<p><span class="callout-warning-head">prcomp() vs. princomp()</span></p>
+<p><span class="callout-warning-head">prcomp() vs. princomp()</span></p>
 There is another function, <code>princomp()</code>, in <code>stats</code> that performs PCA. This function is based on spectral decomposition<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> while <code>prcomp()</code> is based on SVD<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>. SVD has greater numeric accuracy, so <code>prcomp()</code> is preferred.
 </div>
 
@@ -274,8 +274,8 @@ $vectors
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">prcomp</span>(iris[<span class="dv">1</span><span class="op">:</span><span class="dv">60</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>])[[<span class="st">&quot;x&quot;</span>]][,<span class="dv">1</span>] <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">qqnorm</span>()</code></pre></div>
 <p><img src="Notes_files/figure-html/unnamed-chunk-16-1.svg" width="480" /></p>
-<p><code>prcomp(data.frame)[[&quot;x&quot;]]</code> returns the principle component scores, i.e. data that are <strong>rotated</strong> or <strong>weighted</strong> by the elements of the eigenvectors.</p>
-<p><code>prcomp(data.frame)[[&quot;x&quot;]][,1]</code> subsets the first column of the principle component scores, which is the scores of the First principle component, i.e. data weighted according to elements of the first (corresponding to the largest eigenvalue) eigenvector.</p>
+<p><code>prcomp(data.frame)[[&quot;x&quot;]]</code> returns the principle component scores, i.e. data that are <strong>rotated</strong> or <strong>weighted</strong> by the elements of the eigenvectors.</p>
+<p><code>prcomp(data.frame)[[&quot;x&quot;]][,1]</code> subsets the first column of the principle component scores, which is the scores of the First principle component, i.e. data weighted according to elements of the first (corresponding to the largest eigenvalue) eigenvector.</p>
 </div>
 <div id="self-defined-function" class="section level3">
 <h3><span class="header-section-number">2.4.2</span> Self-defined Function</h3>
